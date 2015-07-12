@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* 登录页面 CSS Document */
+.wrapper {
+	margin: 100px auto;
+	margin-left:70px;
+	width: 500px;
+	float:left;
+}
+.loginBox {
+	background-color: #FEFEFE;
+	border: 1px solid #FD908D;
+	border-radius: 5px;
+	color: #444;
+	font: 14px 'Microsoft YaHei','微软雅黑';
+	margin: 0 auto;
+	width: 380px
+}
+.loginBox .loginBoxCenter {
+	border-bottom: 1px solid #FD908D;
+	padding: 22px;
+}
+.loginBox .loginBoxCenter p {
+	margin-bottom: 10px
+}
+
+.loginBox .loginBoxButtons {
+	line-height: 10px;
+	overflow: hidden;
+	padding: 5px 5px;
+	vertical-align: center;
+}
+.loginBox .loginInput {
+	border: 1px solid #FD908D;
+	border-radius: 2px;
+	color: #444;
+	font: 12px 'Microsoft YaHei','微软雅黑';
+	padding: 8px 4px;
+	width: 310px;
+}
+.loginBox .loginBtn{
+	margin-left:150px;
+	padding:2px 8px;
+	cursor:pointer;
+	color: #fff;
+	font: bold 18px Arial;
+	background-color:#FA534D;
+}
+
+.checkP{margin-top:22px;}
+
+.checkInput{
+	height:22px;
+	border:1px solid #FD908D;
+	width:70px;
+	
+}
+
+
+

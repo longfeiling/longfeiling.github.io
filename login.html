@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录页面</title>
+<link rel="stylesheet" href="style/style.css" type="text/css" />
+<link rel="stylesheet" href="style/login.css" type="text/css" />
+
+</head>
+
+<body style="font-size:18px;">
+<!--顶部部分 -->
+<div class="top_menu">
+    <div class="top_left">
+    </div>
+    <div class="top_right">
+        <img src="images/shopping_cart.png" style="width:20px;height:20px;margin-bottom:1px;" /><a href="#">购物车</a>&nbsp;|
+        <a href="#">我的订单</a>&nbsp;|
+        <a href="#">我的心书</a>&nbsp;|
+        <a href="#">帮助</a>
+    </div>
+</div>
+<div class="reg_left">
+	<p><a href="index.html"><img src="images/Logo1.jpg" width="150" height="100" align="center"/></a>
+  	<font style="color:#FF3366;font-size:16px;">欢迎登录</font></p>
+    <img src="images/reg_pic1.png" width="550" height="300"/>
+</div>
+
+<div class="wrapper">
+	<form method="post" name="form2" action="">
+    	<div class="loginBox">
+        	<div class="loginBoxCenter">
+			<p><label for="username">用户名：</label></p>
+			<p><input type="text" id="user" name="user" class="loginInput" placeholder="请输入用户名" /></p>
+			<p><label for="password">密码：</label></p>
+			<p><input type="password" id="password" name="password" class="loginInput"  placeholder="请输入密码"/></p>
+            <p class="checkP">验证码：<input id="check" name="check" class="checkInput" />
+            	<img src="#"/><span><a href="#">看不清，换一张</a></span>
+            </p>
+		</div>
+		<div class="loginBoxButtons">
+            <!-- <button class="loginBtn">登  录</button> -->
+			<a class="loginBtn" href="index.html">登  录</a>
+		</div>
+        </div>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="jquery/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="jquery/control.js"></script>
+<script type="text/javascript">
+</script>
+</html>

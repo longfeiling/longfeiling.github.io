@@ -1,0 +1,262 @@
+/****心书网样式表***/
+
+body,div,ul,li,h1,h2,h3,h4,h5,span,em,p,tr,td,table{margin:0;padding:0;border:0;}
+body{font-family:Arial, Helvetica, sans-serif;font-size:14px;}
+a{text-decoration:none;color:#999;}
+
+/**********顶部样式********/
+.top_menu{width:100%;height:30px;background:#F7F7F7;margin:0 auto;}
+.top_left{line-height:30px;font-size:16px;float:left;margin-left:150px;}
+.top_right{float:right;line-height:30px;margin-right:60px;font-size:13px;}
+
+/**********头部样式********/
+.header{width:1256px;height:150px;border:#ccc 1px solid;margin:2px auto;position:relative;}
+
+.search{float:left;position:absolute;left:300px;top:50px;}
+.search_form{position:relative; height:31px; margin:0 auto;display:inline-block;} 
+.search_form:hover{-webkit-box-shadow:0 0 3px black;-moz-box-shadow:0 0 3px #999;} 
+.sinput{
+	float:left; 
+	width:400px; 
+	height:30px; 
+	line-height:21px; 
+	padding:4px 7px; color:b3b3b3;
+	border:2px solid #E4505C;
+	border-radius:3px 0 0 3px;
+	background-color:#fbfbfb;
+	font-size:15px;
+} 
+.sbtn{
+	float:left; 
+	width:80px;
+	height:42px;
+	padding:0 12px;
+	margin-left:-1px;
+	border-radius:0 3px 3px 0;
+	border:1px solid #E4505C;
+	background-color:#E4505C;
+	cursor:pointer;
+	display:inline-block;
+	font-size:16px; 
+	vertical-align:middle; 
+	color:#f3f7fc;
+	position:absolute;
+} 
+.sbtn:hover{background:#B71223}
+
+/**********导航样式*******/
+
+.nav {
+	display:block;
+	font-size:14px;
+	font-weight:900;
+	background:#f06;
+	width:1258px;
+	height:40px;
+	margin:2px auto;
+}
+.nav_list {
+	list-style:none;
+	
+}
+.list_items {
+	float:left;
+	*display:inline;
+	zoom:1;
+}
+.list_items a {
+	display:block;
+	padding:0 70px;
+	color:#FFF;
+	line-height:40px;
+}
+.list_items a:hover{background:#C03;}
+
+/**********主体样式*******/
+.main{position:relative;width:1258px;height:560px;margin:6px auto;color:#ccc;}
+
+	/**********左边栏样式*******/
+.left_side{
+	width:220px;
+	height:auto;
+	border:3px solid #E4505C;
+	float:left;
+	
+}
+.box{width:220px;margin:0 auto;}
+.box ul li{list-style:none;}
+.level1 a{
+    display: block;
+    height: 43px;
+    line-height: 43px;
+    background:#F7F7F7;
+	font-weight:800;
+    color: #939393;
+	text-indent: 14px;
+	border-top: 1px solid #F0F0F0;
+	font-size:20px;
+	text-decoration:none;
+}
+.level1 a.current{background:#F0F0F0;}
+.navigation li ul{overflow:hidden;}
+.navigation li ul.level2{display:none;}
+.level2 li a{
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    background:#ffffff;
+	font-weight:400;
+    color: #939393;
+	text-indent: 18px;
+	border-top: 0px solid #ffffff;
+    overflow: hidden;
+	font-size:14px;
+}
+.level2 li a:hover{
+	color:#f60;
+}
+.navigation li .level1 a .current{background:#B1D7EF;}
+
+.navigation li level2 a{display:none;}
+	
+	/**********中间栏栏样式*******/
+.center_side{
+	float:left;
+	width:634px;
+	height:384px;
+	margin-left: 8px;
+	position:relative;
+}
+
+#slider{width:630px;
+	height:272px;
+	margin:3px auto;
+	background:url(file:///F|/dw_project/xinshuwang/images/loading.gif) no-repeat 50% 50%;
+}
+#slider img{
+	position:absolute;
+	top:0px; left:0px;
+	display:none;
+}
+.nivo-controlNav{
+	position:absolute;
+	right:20px;
+	top:220px;
+}
+.nivo-controlNav a {
+	display:block;
+	width:22px;
+	height:22px;
+	background:url(file:///F|/dw_project/xinshuwang/images/bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin-right:3px;
+	float:left;
+}
+.nivo-controlNav a.active{background-position:0 -22px;}
+.nivo-directionNav a{
+	display:block;
+	width:30px;height:30px;
+	background:url(file:///F|/dw_project/xinshuwang/images/arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+}
+a.nivo-nextNav{background-position:-30 0;right:15px;}
+a.nivo-preNav{left:15px;}
+
+/**********展示栏样式*******/
+.v_show { width:620px; margin:0 auto;position:absolute; }
+.v_content { position:relative; width:620px; height:180px; overflow:hidden; border:1px solid #E7E7E7;}
+.v_content_list { position:absolute; width:3500px;top:0px; left:0px; }
+.v_content ul {float:left;}
+.v_content ul li { display:inline; float:left; margin:0 5px;}
+.v_content ul li a { display:block; width:130px; height:130px; overflow:hidden; }
+.v_content ul li img {  width:130px; height:130px; }
+.v_content ul li h4 { width:130px; height:25px; overflow:hidden; margin-top:10px; font-weight:normal;text-align:center; }
+.v_content ul li h4 a { display:inline !important; height:auto !important; }
+.v_content ul li span { color:red;margin-left:30px;}
+.v_content ul li em { color:#888; font-family:Verdana; font-size:0.9em;text-align:center; }
+
+ .preNext {width:45px; height:100px; position:absolute; top:30px; cursor:pointer; background:url(images/sprite.png) no-repeat 0 0;}
+ .pre {left:30px;}
+ .next {right:0px; background-position:right top;}
+ 
+ /**********右边栏样式*******/
+ .right_side{width:380px;height:500px;float:left;font-size:16px;}
+ .news{width:380px;height:250px;;margin:5px auto;border:1px #E7E7E7 solid;}
+ .news ul {margin:8px 18px;}
+ .news ul li{margin-top:8px;color:#ccc;}
+ 
+ .prefecture{width:380px;height:180px;border:1px solid #E7E7E7;margin-top:20px;}
+ .prefecture ul {margin:8px 18px;}
+ .prefecture ul li{margin-top:8px;color:#ccc;list-style:none;}
+ .right_side a{color: #939393;}
+ 
+ 
+
+/**********注册页面样式*******/
+
+.reg_left{
+	width:570px;
+	height:600px;
+	float:left;
+	margin-left:20px;
+}
+
+.main_reg{
+	height:600px;
+	size:16px;
+	float:left;
+}
+.main_reg table{
+	width:500px;
+	height:350px; 
+	margin-left:150px;
+	margin-top:60px;
+	border:#FD908D 1px solid;
+	border-radius:10px;
+	background-color: #FEFEFE;
+}
+
+.reg_button{
+	width:100px;
+	height:30px;
+	font:bold 20px Arial;
+	color:#fff;
+	border-radius:2px;
+	background-color:#FA534D;
+	cursor:pointer;
+}
+
+
+
+
+
+
+
+/**********登录页面样式*******/
+.login_tab{
+	float:left;
+	width:500px;
+	height:600px;
+	position:relative;
+}
+.login_tab table{
+	margin-left:200px;
+	margin-top:150px;
+}
+
+
+
+
+/**********购物车页面样式*******/
+#car_header{width:1256px;height:120px;margin:2px auto;position:relative;}
+#car_main{width:1256px;height:450px;margin:2px auto;position:relative;border:solid 1px #ccc;}
+.carTab{width:1256px;height:28px;}
+.th{border:2px solid #fff;width:204px;height:30px;background-color:#FCC;line-height:30px;}
+.left{float:left;}
+
+ 
+ 
+ 
+                                                                                                                                                                                                               

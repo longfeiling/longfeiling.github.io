@@ -1,0 +1,36 @@
+/**********购物车页面样式*******/
+.left{float:left;}
+.right{float:right;}
+
+.car_header{
+	width:1256px;
+	height:120px;
+	margin:2px auto;
+	position:relative;
+}
+#car_main{
+	width:1256px;
+	height:450px;
+	margin:2px auto;
+	position:relative;
+	border:solid 1px #ff0000;
+}
+.carTab{
+	width:1256px
+	;height:28px;
+}
+.th{
+	border:2px solid #fff;
+	width:204px;height:30px;
+	background-color:#ff7373;
+	line-height:30px;
+}
+
+.th1{
+	border:2px solid #fff;
+	width:204px;height:30px;
+	line-height:30px;
+}
+
+
+.car_search{float:left;position:absolute;left:700px;top:30px;}
