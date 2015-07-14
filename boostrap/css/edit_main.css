@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	padding-top:50px;
+	padding-bottom:50px;
+}
+/*滚动广告*/
+.carousel{
+	height:500px;
+	margin-bottom:50px;
+}
+.carousel .item{
+	height:500px;
+	background-color:#000;
+}
+.carousel .item p{
+	font-size:22px;
+	line-height:1.8;
+}
+.carousel .item img{
+	width:100%;
+}
+/*简介*/
+#container-summary{
+	text-align:center;
+}
+.container .divider{
+	margin:10px 0;
+}
+
+/*特性*/
+.feature{
+	margin:20px 0;
+}
+.feature-heading{
+	margin-top:120px;
+	color:#2a6496;
+	font-size:50px;
+}
+.feature-adds{
+	font-size:28px;
+	color:#999;
+}

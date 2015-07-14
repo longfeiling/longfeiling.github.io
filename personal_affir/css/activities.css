@@ -1,0 +1,193 @@
+body,div,ul,li,a,table,h5{
+	margin:0;
+	padding:0;
+	
+	}
+body{
+	width:90%;
+	margin:0 auto;
+	background:none;
+	font-family:"微软雅黑";
+	}
+a{
+	text-decoration:none;
+	}
+a:hover{
+	text-decoration:none;
+	}
+#header{
+	height:70px;
+	width:100%;
+	/*background-color:#DFDEFE;*/
+	border-radius:1em;
+	margin-top:1em;
+	}
+
+
+.topic-one{
+	background:#333;
+	padding-top:8px;
+	padding-bottom:8px;
+	width:100%;
+	}
+/*.topic-one ul{
+		background:red;
+	}
+.topic-one ul li{
+
+	display:inline-block;
+	list-style:none;
+	}*/
+.submenu{
+	font-size:20px;
+	color:white;	
+	/*background:#fff;
+	border-radius:0.5em;*/
+	padding:0.4em 0.8em;
+	}
+.submenu:hover,.active1{
+	background:#5186A8;
+	color:white;
+	text-decoration:none;
+	}
+.events,.invited{
+	background:#fff;
+	}
+.table-hover>tbody>tr:hover>td{
+	background-color: #3399FF;
+	color: #fff;
+	
+}
+
+
+.demo-table{
+	width:65%;
+	height:auto;
+	padding:10px 10px 20px 10px;
+	border:1px solid #ccc;
+	border-radius:10px;
+	background-color:#fff;
+	margin-left:200px;
+	position:fixed;
+	
+	}
+.standup{
+	width:60%;
+	height:auto;
+	margin:0 auto;
+	border-radius:0.5em;
+	border:1px solid #ccc;
+	position:fixed;
+	top:80px;
+	left:200px;
+	padding:0.5em 1em;
+}
+.fontGrey{
+	text-align:center;
+	font-weight:bold;
+}
+.details th,.standup th{
+	width:120px;
+}
+
+.thwords{
+	font-weight:700;
+	font-size:16px;
+	float:right;
+}
+.details td{
+	clear:both;
+}
+
+.method{
+	width:95%;
+	height:80px;
+}
+/*input[type=text]{
+	width:95%;
+}*/
+.btn_group{
+	margin:0.5em 15em;
+}
+.close,.close1 {
+	color:#fff;
+	background: #000;
+	width: 24px;
+	height: 24px;
+	border-radius: 1.5em;
+	line-height: 24px;
+	float: right;
+	cursor: pointer;
+	margin-right:4px;
+	margin-top:3px;
+}
+.close1{
+	background:#ccc;
+	text-shadow: 0 1px 0 #fff;
+}
+.close:hover ,.close1:hover{
+	color:#fff;
+	background:#000;
+}
+#activeDetail{
+	width:70%;
+	margin:0 auto;
+	position:fixed;
+	top:100px;
+	left:170px;
+	}
+.detailTable{
+	padding:0 2em;
+	}
+.join{
+	float:right;
+	margin-right:0.5em;
+	margin-bottom:1em;
+	}
+.refuse{
+	float:right;
+	margin-right:2em;
+	margin-bottom:1em;
+	}
+.sendTime{
+	float:right;
+	}
+	
+.commit{
+	width:100%;
+	margin:0 auto;
+	}
+.commit ul li{
+	list-style:none;
+	padding:0.2em 0;
+	border-top:1px dotted #ccc;
+	margin-top:1.5em;
+	}
+.commit table{
+	margin-bottom:0;
+	}
+.calling{
+	background:#69C;
+	padding:0.2em 0.3em;
+	color:white;
+	border-radius:0.3em;
+	}
+.doing{
+	background:#069;
+	padding:0.2em 0.3em;
+	color:white;
+	border-radius:0.3em;
+	}
+.ending{
+	background:#ccc;
+	padding:0.2em 0.3em;
+	color:white;
+	border-radius:0.3em;
+	}
+.news{
+	width:0.7em;
+	height:0.7em;
+	border-radius:0.7em;
+	background:#F63;
+	position:absolute;
+	}

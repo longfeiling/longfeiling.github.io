@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/datatables.css" rel="stylesheet" type="text/css"/>
+<link href="css/note-main.css" rel="stylesheet"/>
+<script src='js/jquery.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src='js/notepad.js'></script>
+
+</head>
+
+<body>
+	<div class="main"> 
+    	<div class="header">
+        	<div class="topic-one">
+    			<a href="#" class="active1 submenu" id="report">记事本</a>
+    			<input type="button" value="添加" class="btn btn-primary btn-sm addBtn" />
+   			 </div>
+            
+        </div>
+    </div>
+    <div class="note">
+        <table class="table table1 table-striped table-hover" id="mytable">
+        	<thead>
+        	<tr>
+            	<th>序号</th>
+                <th>标题</th>
+                <th>录入时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="showDetail" >
+            	<td>1</td>
+                <td><span>奚璐琰请求权限查看内网SVN用户项目权限。</span></td>
+                <td>2014-08-07     15:30</td>
+                <td><a href="#" >详情</a></td>
+            </tr>
+            <tr class="showDetail">
+            	<td>2</td>
+                <td><span>
+                	因廖杰的内网机无法与内网飞影视频服务器（192.168.10.139）进行远程连接，提示身份验证失。。。。。
+                </span></td>
+                <td>2014-08-15     15:30</td>
+                <td>详情</td>
+            </tr>
+            <tr class="showDetail">
+            	<td>3</td>
+                <td>记录工作站 Sun v880 基本信息。</td>
+                <td>2014-08-07     15:30</td>
+                <td>详情</td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="clear:both;"></div>
+    </div>
+    <!--查看页面详情开始-->
+    <div class="modal-content reveal-modal details">
+    	
+    	<div class="close">&nbsp;X</div>
+       <form action="" method="post">
+    	<table class="table">
+        	<h3 class="fontGrey">字条详情</h3>
+        	<tr>
+            	<th><span class="thwords">标题：</span></th>
+                <td><input type="text" name="title" class="form-control enable" /></td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">发生时间：</span></th>
+                <td><input type="date" name="startTime" class="form-control enable" /></td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">字段内容：</span></th>
+                <td>
+                	<textarea class="form-control enable"></textarea>
+                </td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">处理方法：</span></th>
+                <td>
+                	<textarea class="form-control enable"></textarea>
+                </td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">备注：</span></th>
+                <td>
+                	<textarea class="form-control enable"></textarea>
+                </td> 
+            </tr>
+        </table>
+        <div class="btn_group">
+        	<input type="button" value="修改" class="btn btn-info btn-sm" onClick="updateNote();"/>&nbsp;&nbsp;&nbsp;
+            <input type="button" value="删除" class="btn btn-info btn-sm" />
+        </div>
+        </form>
+        </div>
+        <!--查看页面详情结束-->
+        
+        <!--添加字条页面开始-->
+        <div class="modal-content reveal-modal addNote">
+        
+    	<div class="close1">&nbsp;&nbsp;X</div>
+        <form action=" " method="post">
+    	<table class="table">
+        	<h3 class="fontGrey">添加字条</h3>
+        	<tr>
+            	<th><span class="thwords">标题：</span></th>
+                <td><input type="text" name="title"  class="form-control" /></td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">发生时间：</span></th>
+                <td><input type="data" name="startTime"  class="form-control" /></td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">字段内容：</span></th>
+                <td>
+                	<textarea  class="form-control"></textarea>
+                </td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">处理方法：</span></th>
+                <td>
+                	<textarea  class="form-control"></textarea>
+                </td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">备注：</span></th>
+                <td>
+                	<textarea  class="form-control"></textarea>
+                </td> 
+            </tr>
+        </table>
+        <div class="btn_group">
+        	<input type="button" value="确定" class="btn btn-info btn-sm" />&nbsp;&nbsp;&nbsp;
+            <input type="reset" value="置空" class="btn btn-info btn-sm" />
+        </div>
+        <!--添加字条页面结束-->
+        </form>
+    </div>
+</body>
+</html>
+

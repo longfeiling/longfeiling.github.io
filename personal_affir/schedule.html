@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>日程管理</title>
+<link href='css/fullcalendar.css' rel='stylesheet' />
+<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href="css/schedule.css" rel="stylesheet"/>
+<link href="css/jquery-ui-timepicker-addon.css" rel="stylesheet"/>
+<link type="text/css" href="http://code.jquery.com/ui/1.9.1/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<script src='js/moment.min.js'></script>
+<script src='js/jquery.min.js'></script>
+<script src='js/jquery-ui.custom.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery-ui-timepicker-addon.js"></script>
+<script src="js/jquery.ui.datepicker-zh-CN.js.js" type="text/javascript" charset="gb2312"></script>
+<script src="js/jquery-ui-timepicker-zh-CN.js" type="text/javascript"></script>
+<script src="js/schedule.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+</script>
+
+</head>
+
+<body>
+<div id='wrap'>
+		<div id='external-events'>
+			<h4>常用日程</h4>
+			<div class='external-event'>开会</div>
+			<div class='external-event'>拜访客户</div>
+			<div class='external-event'>运动</div>
+			<div class='external-event'>外出</div>
+			<div class='external-event'>回访</div>
+			<p>
+				<input type='checkbox' id='drop-remove' />
+				<label for='drop-remove'>拖拉后删除</label>
+			</p>
+		</div>
+
+		<div id='calendar'></div>
+		<!--<div id="rubbish">
+        <img src="img/rb1.png" width="100"  />
+        </div>-->
+       <!-- 新增事项弹出框-->
+        <div class="alertEvent" id="addTip">
+        	<div class="close1" id="detailClose">&nbsp;X</div>
+            <h4>新增事项</h4>
+            <div class="eventform">
+            <form action="" method="post" name="form" id="form">
+                <label for="title">事项标题：</label><input type="text" id="title" /><br />
+                <label for="startTime">开始时间：</label><input type="text" id="startTime" /><br />
+                <p id="end"><label for="endTime">结束时间：</label><input type="text" id="endTime" /><br /></p>
+                <input type="checkbox" id="allDay" name="select" checked="checked" /><label for="allDay">全天</label>
+                <input type="checkbox" id="selectTime" name="select" checked="true"/><label for="selectTime">结束时间</label><br />
+                <div class="buttonDiv">
+                <input type="button" value="确定" />
+				<input type="button" value="取消" />  
+                
+                </div>              
+            </form>
+            </div>
+        </div>
+         <!-- 更新事项弹出框-->
+         <div class="alertEvent" id="updateTip">
+        	<div class="close1" id="closeUpdate">&nbsp;X</div>
+            <h4>更新事项</h4>
+            <div class="eventform">
+            <form action="" method="post" name="form" id="formUpdate">
+                <label for="titleUpdate">事项标题：</label><input type="text" id="titleUpdate" /><br />
+                <label for="startUpdate">开始时间：</label><input type="text" id="startUpdate" /><br />
+                <p id="endUpdate"><label for="endUpdate">结束时间：</label><input type="text" id="endUpdate" /><br /></p>
+                <input type="checkbox" id="allDayUpdate" name="select" checked="checked" /><label for="allDayUpdate">全天</label>
+                <input type="checkbox" id="selectTimeUpdate" name="select" checked="true"/><label for="selectTimeUpdate">结束时间</label><br />
+                <div class="buttonDiv">
+                <input type="button" value="确定" />
+				<input type="button" value="取消" />  
+                
+                </div>              
+            </form>
+            </div>
+        </div>
+         
+         
+         
+		<div style='clear:both'></div>
+
+	</div>
+</html>

@@ -1,0 +1,202 @@
+body,div,p,ul,li,a,h1,h2,h3{
+	margin:0px;
+	padding:0px;
+	}
+body{
+	width:90%;
+	margin:0 auto;
+	background:none;
+	font-family:"微软雅黑";
+	}
+.header{
+	height:70px;
+	width:100%;
+	border-radius:1em;
+	margin-top:1em;
+	}
+.topic-one{
+	background:#333;
+	padding-top:8px;
+	padding-bottom:8px;
+	width:100%;
+	}
+	
+.submenu{
+	font-size:20px;
+	color:white;	
+	/*background:#fff;
+	border-radius:0.5em;*/
+	padding:0.4em 0.8em;
+	}
+.submenu:hover,.active1{
+	background:#5186A8;
+	color:white;
+	text-decoration:none;
+	}
+	
+a{
+	text-decoration: none;
+	}
+ul{
+	list-style:none;
+	}
+li {
+	-webkit-box-sizing: border-box;
+	}
+.topic{
+	background:#333;
+	padding-top:8px;
+	padding-bottom:8px;
+	width:100%;
+	}
+.topmenu{
+	font-size:20px;
+	color:white;
+	padding:0.4em 0.8em;
+	}
+.topmenu:hover,.active{
+	background: #5186A8;
+	color: white;	
+	}
+.content{
+	/*width:80%;*/
+	height:auto;
+	margin-left:15px;
+	margin-top:5px;
+	}
+.c{
+	font-size:20px;
+	color:#333;
+	}
+.li-list p{
+	color:#888;
+	height:36px;
+	}
+.li-list,.raiders-list{
+	width:870px;
+	height:auto;
+	}
+.raiders-list,.text{
+	font-size: 12px;
+	color: #888;
+	overflow: hidden;
+	clear: both;
+	line-height: 24px;
+	}
+.title{
+	width:342px;
+	}
+.title p a:hover{
+	color:#03F;
+	}
+.fr{
+	float:right;
+	text-align:center;
+	vertical-align:text-top;
+	}
+.dib {
+	display: inline-block;
+	vertical-align: middle;
+	}
+.raiders-list li {
+	padding: 20px 0;
+	border-bottom: 1px solid #eaeaea;
+	overflow: hidden;
+	}
+/**********动态详情*****************/
+.p-detail{
+	color:#999;
+	font-size:14px;
+}
+.article_text{
+	border:#ccc 1px solid;
+	border-radius:0.2em;
+	width:100%;	
+	height:auto;
+	padding:5px;
+	clear:both;
+}
+.article_content{
+	clear:both;
+}
+.accessory{
+	font-size:14px;		
+	height:auto;
+	margin-top:10px;
+	margin-left:2em;
+}
+.accessory ul li{
+	display:block;
+	/*border-bottom:#900 1px dashed;*/
+}
+.ul-box{
+	margin:0 auto;
+	border-bottom:#ccc 1px dotted;
+	margin-top:8px;
+}
+.ul-box ul li {
+	width:80px;
+	display:inline-block;
+	margin-left:15px;
+}
+.ul-box ul li span{
+	font-size:12px;
+	display:block;	
+}
+.con_title{
+	margin-left:-5px;
+	margin-top:12px;
+	padding: 5px 45px 5px 20px;
+	width: 150px;
+	color: #fff;
+	font-size: 14px;
+	background: #353839 url(../img/arw.gif) no-repeat 100% 50%;
+}
+.comment ul li{
+	border-bottom:2px #333 solid;
+}
+.comment-head{
+	font-size:14px;
+	border-bottom:#ccc 1px dashed;
+	text-indent:2em;
+	color:#999;
+	margin-top:10px;
+}
+.comment-body{
+	width:700px;
+	height:70px;
+	text-indent:3em;
+}
+.po_box {
+    height: 30px;
+    line-height: 30px;
+    background: none repeat scroll 0% 0% #ccc;
+    padding: 0px 5px;
+	font-size:12px;]
+}
+.replay{
+}
+.po_box a {
+	width: auto;
+	display: inline-block;
+	float: left;
+	margin: 0px 5px;
+	color:#fff;
+}
+.myComment{
+	margin:5px;
+}
+#mys{
+	width:99%;
+	height:80px;
+}
+.con_btn{
+	width:200px;
+	margin:5px auto;
+}
+.add-report {
+    float: right;
+    margin-right: 5px;
+    margin-top: 6px;
+}
+

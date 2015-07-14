@@ -1,0 +1,44 @@
+/*css 样式*/
+*{margin: 0;padding:0;}
+a{text-decoration: none;}
+body{font-family: arial,宋体,sans-serif;font-size: 12px;background: #fff;color:#ccc;}
+.content{margin: 200px auto;width: 700px;}
+.content ul{list-style: none;margin-left: -10px;}
+.content ul li{float: left;margin-left: 10px;}
+.content ul li h2{text-align: center;}
+.animate:hover{
+	width: 150px;
+	height: 180px;
+	-moz-animation:myAnimate 5s  2s infinite alternate;
+	-webkit-animation:myAnimate 5s  2s infinite alternate;
+	-o-animation:myAnimate 5s  2s infinite alternate;
+	animation:myAnimate 5s  2s infinite alternate;
+}
+
+@-webkit-keyframes myAnimate
+{
+	0%{-webkit-transform: rotateY(90deg);-moz-transform: rotateY(90deg);-o-transform: rotateY(90deg);transform: rotateY(180deg);}
+	50%{-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);-o-transform: rotateY(180deg);transform: rotateY(180deg);}
+	100%{-webkit-transform: rotateY(360deg);-moz-transform: rotateY(360deg);-o-transform: rotateY(360deg);transform: rotateY(180deg);}
+}
+
+@-moz-keyframes myAnimate
+{
+	0%{-webkit-transform: rotateY(90deg);-moz-transform: rotateY(90deg);-o-transform: rotateY(90deg);transform: rotateY(180deg);}
+	50%{-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);-o-transform: rotateY(180deg);transform: rotateY(180deg);}
+	100%{-webkit-transform: rotateY(360deg);-moz-transform: rotateY(360deg);-o-transform: rotateY(360deg);transform: rotateY(180deg);}
+}
+
+@-o-keyframes myAnimate
+{
+	0%{-webkit-transform: rotateY(90deg);-moz-transform: rotateY(90deg);-o-transform: rotateY(90deg);transform: rotateY(180deg);}
+	50%{-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);-o-transform: rotateY(180deg);transform: rotateY(180deg);}
+	100%{-webkit-transform: rotateY(360deg);-moz-transform: rotateY(360deg);-o-transform: rotateY(360deg);transform: rotateY(180deg);}
+}
+@keyframes myAnimate
+{
+	0%{-webkit-transform: rotateY(90deg);-moz-transform: rotateY(90deg);-o-transform: rotateY(90deg);transform: rotateY(180deg);}
+	50%{-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);-o-transform: rotateY(180deg);transform: rotateY(180deg);}
+	100%{-webkit-transform: rotateY(360deg);-moz-transform: rotateY(360deg);-o-transform: rotateY(360deg);transform: rotateY(180deg);}
+}
+

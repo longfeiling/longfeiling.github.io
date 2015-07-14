@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>报告管理</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/datatables.css"/>
+<link rel="stylesheet" type="text/css" href="css/report.css"/>
+
+<script language="javascript" src="js/jquery.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+<script language="javascript" src="js/jquery.dataTables.min.js"></script>
+<script language="javascript" src="js/report.js"></script>
+</head>
+<body>
+<div>
+<div id="header">
+    <div class="topic-one">
+    	<a href="#" class="submenu active1" id="report">报告管理</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	<a href="#" class="submenu " id="leave">请假管理</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="submenu " id="download">下载模板</a>
+        <button id="add-report" class="btn btn-primary btn-sm add-report">添加报告</button>
+    </div>
+    
+</div>
+<div class="report-model">
+	
+    
+    <div class="tableList">
+	<table class="table table-striped table-hover" id="reportList">
+    	<thead>
+        	<tr>
+            	<th>序号</th>
+                <th>标题</th>
+                <th>类型</th>
+                <th>状态</th>
+                <th>录入时间</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        	<tr>
+            	<td>1</td>
+                <td>陈飞元申请转试用</td>
+                <td>实习转试用</td>
+                <td>未审核</td>
+                <td>2014-08-07</td>
+                <td><a href="#">详情</a></td>
+            </tr>
+            <tr>
+            	<td>2</td>
+                <td>申请更换电脑</td>
+                <td>设备更换维修申请</td>
+                <td>已通过</td>
+                <td>2014-08-07</td>
+                <td><a href="#">详情</a></td>
+            </tr>
+            <tr>
+            	<td>3</td>
+                <td>8月第一周周志</td>
+                <td>周志</td>
+                <td>已备案</td>
+                <td>2014-08-04</td>
+                <td><a href="#">详情</a></td>
+            </tr>
+            <tr>
+            	<td>4</td>
+                <td>7月份总结</td>
+                <td>每月总结</td>
+                <td>已备案</td>
+                <td>2014-07-30</td>
+                <td><a href="#">详情</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="clear:both;"></div>
+    
+   </div>  
+</div>
+<!--请假管理-->
+<div class="leaveManage">
+<h2>暂时还没开发好</h2>
+
+</div>
+
+
+
+<!--添加报告-->
+<div class="add-report-div">
+    	<button type="button" class="close" id="reportClose">
+        	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button><br/>
+        <button type="button"  class="btn btn-primary" id="downloadModel">下载模板</button>
+        	<table class="add-report-table table-striped" id="modelList" >
+        	<thead>
+            <tr>
+            <th>模板类型</th><th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+               
+                <tr>
+                    <td>空模板</td>
+                    <td><a href="#" id="usingModel">使用模板</a></td>
+                </tr>
+                <tr>
+                    <td>员工实习转试用模板</td>
+                    <td><a href="#">使用模板</a></td>
+                </tr>
+                <tr>
+                    <td>员工试用转正式模板</td>
+                    <td><a href="#">使用模板</a></td>
+                </tr>
+                <tr>
+                    <td>出差报告模板</td>
+                    <td><a href="#">使用模板</a></td>
+                </tr>
+                <tr>
+                    <td>周志模板</td>
+                    <td><a href="#">使用模板</a></td>
+                </tr>
+                <tr>
+                    <td>月结模板</td>
+                    <td><a href="#">使用模板</a></td>
+                </tr>
+                <tr>
+                    <td>季度总结模板</td>
+                    <td><a href="#">使用模板</a></td>
+                </tr>
+                <tr>
+                    <td>年终总结模板</td>
+                    <td><a href="#">使用模板</a></td>
+                </tr>
+            </tbody> 
+        </table>
+    </div>
+    <!--使用模板-->
+<div class="usingModel">
+	<button type="button" class="close" id="modelClose">
+        	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+    </button>
+	<h2 align="center">模板名称</h2>
+    <table class="table ">
+    	<tr>
+        	<td width="80px">标题：</td> <td><input type="text" class="form-control" placeholder="输入标题"></td>
+         </tr>
+         <tr>
+        	<td >内容：</td>
+         
+            <td><textarea class="form-control" rows="10"></textarea></td>
+           </tr>
+         <tr>
+         	<td colspan="2" align="center" ><button class="btn btn-primary btn-sm">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="btn btn-primary btn-sm">重置</button></td>
+         </tr>
+    </table>
+</div>
+<div class="download_model">
+	<table class="table-striped table-hover download-table">
+    	<thead>
+        <tr><th>模板类型</th><th>操作</th></tr>
+        </thead>
+    	<tbody>
+        	<tr>
+            	<td>空模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>员工实习转试用模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>员工试用转正式模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>出差报告模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>周志模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>月结模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>季度总结模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>年终总结模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>出差报告模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>周志模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>月结模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>季度总结模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+            	<td>年终总结模板</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+        </tbody>
+    </table>
+   
+</div>
+<div style="clear:both;"></div>
+</div>
+</body>
+</html>

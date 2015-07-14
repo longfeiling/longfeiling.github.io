@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>活动</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/datatables.css" />
+<link rel="stylesheet" type="text/css" href="css/activities.css"/>
+
+<script language="javascript" src="js/jquery.min.js"></script>
+<script language="javascript" src="js/jquery.dataTables.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+<script language="javascript" src="js/activities.js"></script>
+</head>
+<body>
+<div class="whole">
+
+<div id="header">
+    <div class="topic-one">
+    	<!--<ul>
+        	<li><a href="#" class="submenu active1" id="activities">我的活动</a></li>
+            <li><a href="#" class="submenu" id="invited-by">被邀请活动</a></li>
+            <li><a href="#" class="submenu" id="start">发起活动</a></li>
+        </ul>-->
+    	<a href="#" class="submenu active1" id="activities">我的活动</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	<a href="#" class="submenu" id="invited-by">被邀请活动<span class="news"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="submenu" id="start">发起活动</a>
+        
+    </div>
+</div>
+
+<div class="events">
+	<table class="table table-striped table-hover" id="eventTable">
+    	<thead>
+        	<tr>
+                <th>序号</th>
+                <th>活动标题</th>
+                <th>活动时间</th>
+                <th>参与人数</th>
+                <th>活动状态</th>
+                <th>操作</th>
+        	</tr>
+        </thead>
+        <tbody>
+             <tr>
+                <td>1</td>
+                <td>白云山走起</td>
+                <td><span>2014-8-15 15:00</span> --<span>2014-8-15 19:00</span></td>
+                <td>8</td>
+                <td><span class="calling">召集中</span></td>
+                <td id="eventDetail">详情</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>飞越大学城</td>
+                <td><span>2014-8-15 15:00</span> --<span>2014-8-15 19:00</span></td>
+                <td>12</td>
+                <td><span class="doing">进行中</span></td>
+                <td>详情</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>徒步横穿大夫山</td>
+                <td><span>2014-8-15 15:00</span> --<span>2014-8-15 19:00</span></td>
+                <td>31</td>
+                <td><span class="ending">已结束</span></td>
+                <td>详情</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="clear:both;"></div>
+</div>
+<div class="invited">
+    
+	<table class="table table-striped table-hover" id="invitedTable">
+    	<thead>
+        	<tr>
+                <th>序号</th>
+                <th>活动标题</th>
+                <th>活动时间</th>
+                <th>参与人数</th>
+                <th>活动状态</th>
+                <th>邀请人</th>
+                <th>查看</th>
+        	</tr>
+        </thead>
+        <tbody>
+             <tr class="show_detail">
+                <td>1</td>
+                <td>白云山走起</td>
+                <td>2014-8-15 15:00 --</td>
+                <td>8</td>
+                <td><span class="calling">召集中</span></td>
+                <td>陈飞元</td>
+                <td><a href="#" class="detial">详情</a></td>
+            </tr>
+            <tr class="show_detail">
+                <td>2</td>
+                <td>飞越大学城</td>
+                <td>2014-8-15 15:00 -- 2014-8-15 19:00</td>
+                <td>12</td>
+                <td><span class="doing">进行中</span></td>
+                <td>陈飞元</td>
+                <td><a href="#">详情</a></td>
+            </tr>
+             <tr class="show_detail">
+                <td>2</td>
+                <td>飞越大学城</td>
+                <td>2014-8-15 15:00 -- 2014-8-15 19:00</td>
+                <td>12</td>
+                <td><span class="ending">已结束</span></td>
+                <td>陈飞元</td>
+                <td><a href="#">详情</a></td>
+            </tr>
+             
+            
+        </tbody>
+    </table>
+    <div style="clear:both;"></div>
+</div>
+
+
+<!--发起活动-->
+  <div class="modal-content reveal-modal standup">
+    	<div class="close1" id="standupClose">&nbsp;&nbsp;X</div>
+    	<table class="table">
+        	<h3 class="fontGrey">发起活动</h3>
+        	<tr>
+            	<th><span class="thwords">活动标题：</span></th>
+                <td colspan="3"><input type="text" class="form-control"/></td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">活动时间：</span></th>
+                <td><input type="date" width="40%" class="form-control"/></td><td align="center">----</td><td><input type="date"  width="40%" class="form-control"  /></td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">地点：</span></th>
+                <td colspan="3">
+                	<input type="text" class="form-control" />
+                </td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">费用：</span></th>
+                <td>
+                	<input type="text" class="form-control"/>
+                </td> 
+                <th><span class="thwords">状态：</span></th>
+                <td>
+                	<input type="text" class="form-control" />
+                </td> 
+            </tr>
+            <tr>
+            	<th><span class="thwords">活动介绍：</span></th>
+                <td colspan="3">
+                	<textarea class="form-control" ></textarea>
+                </td> 
+            </tr>
+            
+        </table>
+        <div class="btn_group">
+        	<input type="button" value="确定" class="btn btn-info btn-sm" id="submintEvent" />&nbsp;&nbsp;&nbsp;
+            <input type="button" value="置空" class="btn btn-info btn-sm" />
+        </div>
+        <!--发起活动页面结束-->
+        
+    </div>
+
+
+<!--活动详情-->
+<div class="modal-content reveal-modal " id="activeDetail">
+	<div class="close1" id="detailClose">&nbsp;&nbsp;X</div>
+    <h3 align="center">白云山走起</h3>
+    <div class="btnDiv">
+    <button class="btn btn-primary refuse btn-xs">拒绝</button><button class="btn btn-danger join btn-xs">我要参加</button>
+    </div>
+    <div class="detailTable">
+    <table class="table table-striped table-bordered">
+    <tr>
+    <td><span class="thwords">活动时间：</span></td><td colspan="3"><span>2014-08-15</span>---<span >2014-09-10</span></td>
+    </tr>
+    <tr>
+    <td><span class="thwords">地点：</span></td><td colspan="3">广州白云山</td>
+    </tr>
+    <tr>
+    <td><span class="thwords">费用：</span></td><td >151</td><td><span class="thwords">状态：</span></td><td><span class="calling">召集中</span></td>
+    </tr>
+    <tr>
+    <td><span class="thwords">发起人：</span></td><td >陈飞元</td><td><span class="thwords">发起时间：</span></td><td>2014-08-04 15:00</td>
+    </tr>
+    <tr>
+    <td><span class="thwords">活动介绍：</span></td><td colspan="3" width="450px">广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山广州白云山</td>
+    </tr>
+    <tr>
+    <td><span class="thwords">参与人员：</span></td><td colspan="3" width="450px">陈飞元、不子昂、曲笔升、龙菲菲</td>
+    </tr>
+   
+    
+    </table>
+   <div class="commit">
+  <!-- <h5 style="font-weight:bold;color:blue;">评论</h5>-->
+    <ul>
+   		 <li><span>陈飞元：</span>和复合肥厚厚的分都分了地方<br /></li><span class="sendTime">2014-04-12</span>
+   		<li><span>陈飞元：</span>和复合肥厚厚的分都分了地方<br /></li><span class="sendTime">2014-04-12</span>
+       <li><span>陈飞元：</span>和复合肥厚厚的分都分了地方<br /></li><span class="sendTime">2014-04-12</span>
+       
+    </ul>
+    <table class="table">
+    	<tr>
+        <td><label for="commit">留言：</label></td><td><textarea name="commit" class="form-control" rows="4"></textarea></td>
+        <td style="vertical-align:bottom;"><button class="btn btn-primary btn-sm">评论</button> </td>
+        </tr>
+    </table>
+    
+    </div>
+    <div style="clear:both;"></div>
+   </div>
+   <div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</body>
+</html>
