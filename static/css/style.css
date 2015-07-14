@@ -6,13 +6,14 @@ body{font-family: arial,宋体,sans-serif;font-size: 12px;background: #fff;color
 .content ul{list-style: none;margin-left: -10px;}
 .content ul li{float: left;margin-left: 10px;}
 .content ul li h2{text-align: center;}
-.animate:hover{
+.animate a:hover{
+	display: block;
 	width: 150px;
 	height: 180px;
-	-moz-animation:myAnimate 5s  2s infinite alternate;
-	-webkit-animation:myAnimate 5s  2s infinite alternate;
-	-o-animation:myAnimate 5s  2s infinite alternate;
-	animation:myAnimate 5s  2s infinite alternate;
+	-moz-animation:myAnimate 5s  0 infinite;
+	-webkit-animation:myAnimate 5s  0 infinite;
+	-o-animation:myAnimate 5s  0 infinite;
+	animation:myAnimate 5s  0 infinite;
 }
 
 @-webkit-keyframes myAnimate
