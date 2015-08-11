@@ -36,6 +36,7 @@
 			</div>
 			<div class="section s3"></div>
 			<div class="section s4"></div>
+			<div class="section s5"></div>
 		</div>
 	</div>
 </body>
@@ -49,6 +50,8 @@ $('#fullpage').fullpage({
     scrollingSpeed:600,
     scrollOverflow:true,
     anchors:["page1","page2","page3","page4","page5"],
+    sectionsColor: ['#f2f2f2',  '#A0B3D6','#70888C', 'whitesmoke', '#f2f2f2'],
+    // sectionsColor: ['#f2f2f2',  '#7BAABE','#4BBFC3', 'whitesmoke', '#f2f2f2'],
     afterLoad:function(anchorLink,index){
     	console.log(index)
     }

@@ -167,47 +167,6 @@ h1,h2,h3,h4 {
     position: relative
 }
 
-.foot-right .ib {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 16px;
-    text-align: center
-}
-
-.foot-right .ib .iconfont {
-    color: #fff;
-    font-size: 18px
-}
-
-.foot-right .weixin .ib {
-    background: #9ac11a
-}
-
-.foot-right .weibo .ib {
-    background: #ed706e
-}
-
-.wc-foot .copyright {
-    text-align: center;
-    padding: 30px 20px 0
-}
-
-.loading {
-    line-height: 100%;
-    text-align: center;
-    padding-top: 300px;
-    font-size: 14px
-}
-
-.fp-enabled body,html.fp-enabled {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    -webkit-tap-highlight-color: transparent
-}
-
 #superContainer {
     height: 100%;
     -ms-touch-action: none;
