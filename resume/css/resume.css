@@ -375,8 +375,8 @@ h1,h2,h3,h4 {
     height: 200px;
     position: absolute;
     border-radius: 50%;
-    /*background: #0cc;*/
-    background: -moz-linear-gradient(top,#F9F900, #FF0000); 
+    background: #0cc;
+    /*background: -moz-linear-gradient(top,#F9F900, #FF0000); */
 }
 .section.s2 .pic_left,.section.s2 .pic_right{
     width: 200px;
@@ -406,13 +406,13 @@ h1,h2,h3,h4 {
     clip:rect(0,100px,auto,0);
 }
 .section.s2 .mark{
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
     position: absolute;
-    left: 25px;
-    top: 25px;
+    left: 15px;
+    top: 15px;
     background: #fff;
     text-align: center;
-    line-height: 150px;     
-}
+    line-height: 170px;     
+    }
