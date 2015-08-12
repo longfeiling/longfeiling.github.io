@@ -367,3 +367,52 @@ h1,h2,h3,h4 {
 .fp-slidesNav ul li {
     display: inline-block
 }
+
+
+/*circle*/
+.section.s2 .circle{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+    /*background: #0cc;*/
+    background: -moz-linear-gradient(top,#F9F900, #FF0000); 
+}
+.section.s2 .pic_left,.section.s2 .pic_right{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+.section.s2 .left,.section.s2 .right{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    background: #ccc;
+    /*background: -moz-linear-gradient(top, #FF0000, #F9F900); */
+    display: block;
+    /*transform:rotate(30deg);*/
+}
+.section.s2 .pic_left,.section.s2 .left{
+    clip:rect(0 auto auto 100px);
+    clip:rect(0,auto,auto,100px);
+}
+.section.s2 .pic_right,.section.s2 .right{
+    clip:rect(0 100px auto 0);
+    clip:rect(0,100px,auto,0);
+}
+.section.s2 .mark{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    background: #fff;
+    text-align: center;
+    line-height: 150px;     
+}
