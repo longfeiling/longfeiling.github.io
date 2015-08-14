@@ -127,7 +127,7 @@ h1,h2,h3,h4 {
     color: #fff;
     left: 50%;
     top: 50%;
-    position: absolute;
+    position: relative;
     text-align: center;
     width: 640px;
     margin: -320px 0 0 -320px;
@@ -369,11 +369,20 @@ h1,h2,h3,h4 {
 }
 
 
+.section .layout {
+    height: 410px;
+    left: 50%;
+    margin-left: -320px;
+    position: absolute;
+    width: 640px;
+}
+
+
 /*circle*/
 .section.s2 .circle{
     width: 200px;
     height: 200px;
-    position: absolute;
+    position: relative;
     border-radius: 50%;
     background: #0cc;
     /*background: -moz-linear-gradient(top,#F9F900, #FF0000); */
