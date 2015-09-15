@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+    p { color:red; margin:5px; cursor:pointer; }
+    p:hover { background:yellow; }
+    
+    .selected { color:blue; }
+    .highlight { background:yellow; }
+    
+    div {
+        background-color:#bca;
+        width:100px;
+        border:1px solid green;
+    }
+    div { color:red; }
+</style>
+<script src="http://img.mukewang.com/down/540812440001e40e00000000.js" type="text/javascript"></script>
+<title>便捷的操作</title>
+</head>
+<body>
+
+
+<!-- 例一 -->
+<p>First Paragraph</p>
+<p>Second Paragraph</p>
+<p>Yet one more Paragraph</p></br></br></br>
+
+
+<!-- 例二 -->
+<button id="go">&raquo; Run</button>
+<div id="block">Hello!</div></br></br></br>
+
+
+<!-- 例三 -->
+<form>
+    <input type="checkbox" name="newsletter" value="Hourly" checked="checked">
+    <input type="checkbox" name="newsletter" value="Daily">
+    <input type="checkbox" name="newsletter" value="Weekly">
+    <input type="checkbox" name="newsletter" value="Monthly" checked>
+    <input type="checkbox" name="newsletter" value="Yearly">
+</form>
+<div id="t"></div>
+<script>
+    
+  //例一
+  $("p").click(function () {
+      $(this).slideUp();
+  });
+   
+   
+  
+  //例子二
+  $("#go").click(function(){
+      $("#block").animate({
+        width: "70%",
+        opacity: 0.4,
+        marginLeft: "0.6in",
+        fontSize: "3em",
+        borderWidth: "10px"
+      }, 1500 );
+  });
+  
+  
+  //例子三
+ var countChecked = function() {
+    var n = $( "input:checked" ).length;
+   $( "#t" ).text( n + (n === 1 ? " is" : " are") + " checked!" );
+};
+
+$( "input[type=checkbox]" ).on( "click", countChecked );
+
+</script>
+
+
+</body>
+</html>
