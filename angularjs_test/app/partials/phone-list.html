@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp" class="ng-scope">
+<head>
+	<meta charset="utf-8">
+	<title ng-bind-templete="Google Phone Gallery:{{query}}">Google Phone Gallery</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript" src="../js/angular-route.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/controller.js"></script>
+</head>
+<body>
+	<div ng-view class="container-fluid ng-scope">
+		<div class="row">
+			<div class="col-md-2">
+				Search :<input ng-model="query"> <br>
+				Sort by :
+				<select ng-model="orderPorp">
+					<option value="name">Alphabetical</option>
+					<option value="age">Newest</option>
+				</select>
+			</div>
+			<div class="col-md-10">
+				<ul>
+					<li><a href="#"><img src="http://angular.github.io/angular-phonecat/step-7/app/img/phones/samsung-transform.0.jpg"></a></li>
+					<li ng-repeat="phone in phones | fitler : query | orderBy : orderPorp" class="thumbnail">
+						<a href="#/phones/{{phone.id}}" class="thumb"><img src="phone.imageUrl"></a>
+						<a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+						<p>{{phone.snippet}}</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</body>
+</html>
