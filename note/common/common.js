@@ -46,3 +46,20 @@ Base.getCookie = function(name) {
 	var cookie = document.cookie.match("\\b" + name + "([^;]*)\\b");
 	return cookie ? cookie[1] : undefined;
 }
+
+
+// 聚焦的函数
+function changeSize(elem,width,height) {
+	var _this = $(elem);
+	_this.css({"position":"absolute","left":"2px","top":"-1px","zIndex":"999","boxShadow":"0 0 5px #c38787","borderColor":"#c38787"})
+	_this.animate({"width":width,"height":height},300);
+}
+
+//失焦的时候
+function reSize(ele) {
+	var _this = $(this);
+	_this.animate({"width":"100%","height":30},300,function(){
+		_this.css({"position":"static","boxShadow":"none","borderColor":"#d0d0d0"});
+	})
+}
+
