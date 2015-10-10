@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+<meta charset="utf-8" />  
+<title>模板数据绑定</title>
+<script type="text/javascript" src="js/angular.js"></script>
+</head>
+<body>
+<div ng-controller="testC">
+	<h1>{{question.newtitle}}</h1>
+	模板：<span ng-repeat="t in templetes"><a href="javascript:void(0);">{{t}}</a>&nbsp;</span><br/>
+	题目：<input type="text" ng-model="question.name"/> <br/>
+	分数：<input type="text" ng-model="question.fraction" fraction-num /> <br/>
+	类型：<select ng-model="question.type">
+			<option value="1" selected>单选题</option>
+			<option value="2" selected>多选题</option>
+		  </select> <br/>
+	选项：<button ng-click="addOption()">增加选项</button> <br/>
+	<ul>
+		<li ng-repeat="o in question.options">
+			<b>{{$index+1}}.</b>
+			<input type="text" ng-model="o.content" value="o.content" />
+			<a href="javascript:void(0);" ng-click="delOption($index)">删除</a>
+		</li>
+	</ul>
+	<hr/>
+	
+	<div>
+		<h1>{{question.perviewtitle}}</h1>
+		<b>[{{question.type | typeFilter }}]{{question.name}}</b>（{{question.fraction}}分）
+		<ul>
+			<li ng-repeat="o in question.options">
+				<b>{{$index + 1}}.</b>
+				<input type="radio" name="optcheck" ng-show="question.type==1" /> 
+				<input type="checkbox" ng-show="question.type==2" /> 
+				{{o.content}}
+			</li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+var app = angular.module("MyApp",[],function(){console.log("started")});
+var questionModel = {
+	newtitle : '新建试题',
+	perviewtitle : '预览试题',
+	name : '',
+	fraction : '',
+	type : '1',
+	options : []
+};
+app.controller('testC',function($scope,tpls) {
+	$scope.question = questionModel;
+	$scope.nowTime = new Date().valueOf();
+	$scope.templetes = tpls; //赋值到$scope中
+	$scope.addOption = function() {
+		var o = {content:''};
+		$scope.question.options.push(o);
+	};
+	$scope.delOption = function(index) {
+		$scope.question.options.splice(index,1);
+	}
+})
+app.filter('typeFilter',function() {
+	var f = function(input) {
+		return input == '1' ? '单选题' : '多选题' ;
+	};
+	return f;
+})
+
+app.directive('fractionNum',function() {
+	return {
+		link : function(scope,elements,attrs,controller) {
+			elements[0].onkeyup = function() {
+				if(isNaN(this.value) || this.value < 1 ||  this.value > 10) {
+					this.style.borderColor = 'red';
+				}else{
+					this.style.borderColor = '';
+				}
+			};
+		}
+	};
+})
+
+app.factory('tpls',function() {
+	return ['tpl1','tpl2','tpl3','tpl4'];
+})
+
+</script>
+</body>
+</html>
