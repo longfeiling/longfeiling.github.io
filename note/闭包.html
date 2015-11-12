@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div>
+		<ul id="list">
+			<li>这是第一条</li>
+			<li>这是第二条</li>
+			<li>这是第三条</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+/*var elements = document.getElementById("list").querySelectorAll("li");
+for(var i=0;i<elements.length;i++){
+	(function(){       //这是一个匿名函数
+		var j = i;  //将i的值保存到闭包的变量中
+		elements[i].onclick = function() {
+			console.log(j);
+		}
+	})();   //立即调用该匿名函数
+}*/
+
+var elements = document.getElementById("list").querySelectorAll('li');
+for(var i=0;i<elements.length;i++){
+	(function(){
+		var j = i;
+		var newItem = document.createElement("li"),
+			textNode = document.createTextNode("这是新增的一条");
+		newItem.appendChild(textNode);
+		elements[i].onclick = function() {
+			if(j==1){
+				document.getElementById("list").insertBefore(newItem,elements[j]);
+				alert("这是第二条");
+			}
+			console.log(j);
+		}
+	})();
+}
+
+
+
+
+
+/*var ulDom = document.getElementById("list");
+var liList = '';
+for(var i=1;i<=1000;i++){
+liList += '<li id="'+i+'" class="n'+i+'">'+i+'<双击查看原图>';
+}
+ulDom.append(liList);
+
+var ul = document.getElementById('list');
+ul.addEventListener('click',function(e){
+if(e.target && e.target.nodeName.toLowerCase() == 'li'){
+alert('id：' + e.target.id + '--------class：' + e.target.className + '---------内容：' + e.target.lastChild.nodeValue + '---------坐标：(' + e.target.offsetLeft + ',' + e.target.offsetTop + ')');
+}
+});*/
+
+
+
+// 作用域
+var name="global";
+var obj={
+name:'first',
+fn:function(){
+console.log(this.name);
+}
+}
+
+obj.fn();
+
+var s=obj.fn;
+s();
+
+var x={name:'second'};
+
+obj.fn.call(x);
+
+var b={name:'third'};
+b=obj.fn;
+b()
+
+
+
+// 作用域
+function cal(x,y,z){
+	arguments[1] = 5;
+	alert(z)
+}
+cal(1,2,3);
+
+// 数组去重方法
+	Array.prototype.unique1 = function(){
+		var arr = [];
+		for(var i = 0;i<this.length;i++){
+			if(arr.indexof(this[i]) == -1){
+				arr.push(this[i]);
+			}
+		}
+		return arr;
+	}
+	var array = [1,2,3,3,2,1];
+	array.unique1();
+
+	Array.prototype.unique2 = function(){
+		var arr = [],
+			json = {};
+		for(var i=0;i<this.length;i++){
+			if(!json[this[i]]){
+				json[this[i]] = true;
+				arr.push(this[i]);
+			}
+		}
+		return arr;
+	}
+
+	Array.prototype.unique3 = function(){
+		this.sort(req);
+		var arr = [];
+		for(var i=0;i<this.length;i++){
+			if(this[i] != this[i-1]){
+				arr.push(this[i]);
+			}
+		}
+	}
+
+
+	// call 和 apply() 
+	fucntion changeStyle(attr,value) {
+		this.style[attr] = value;
+	}
+	var box = document.getElementById("box");
+	window.changeStyle.call(box,"height","200px");
+	window.changeStyle.apply(box,["height","200px"]);
+
+	/*
+	call 中的第一个参数用于指定将要调用此函数的对象
+	在这里，changeStyle函数被box对象调用，this指向box对象，如果
+	不用call或apply的话，程序报错，因为window对象没有changeStyle这个函数
+	*/ 
+
+
+	/*
+	假设有一个ul父节点，包含了很多li的子节点
+	实现当我们鼠标移到li的时候，需要获取此li的相关信息并且悬浮窗显示详细信息、
+	一般的想法是用MouseOver 或者 onclick的事件监听：
+	*/ 
+	function addListeners4li(liNode){
+		liNode.onClick = fucntion() {...}
+		liNode.onMouseOver = fucntion() {...}
+	}
+	window.onload = fucntion() {
+		var ulNode = document.getElementById("parend_ul");
+		var li = document.getElementByTagName("li");
+		for(var i=0;i<li.length;i++){
+			addListeners4li();
+		}
+	}
+
+	/*
+	但是如果li元素频繁的添加或者是删除，我们每次li的时候都会调用addListeners4li这个函数，这就添加了复杂度和出错概率
+	更简单的方法就是用事件代理的办法，通过检查事件的目标对象（target）来判断获取事件源li,代码如下：
+	*/ 
+	document.getElementById("parend_ul").addEventListener('click',function(e){
+		if(e.target && e.target.nodeName.toUpperCase() == "LI") {
+			console.log("list item",e.target.id.replace("post-"),"was clicked");
+		}
+	});
+
+
+	/*
+	this
+	this 永远都是指向调用该函数运行的对象，而不是指创建该函数的对象，匿名函数或者是不处在任何对象中的函数指向window
+	1.如果是call 或者是cpply ,with 指定的this是谁，它指向谁
+	2，普通的函数调用，函数被谁调用，它就指向谁
+	*/ 
+</script>
+</html>

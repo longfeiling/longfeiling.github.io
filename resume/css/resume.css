@@ -56,7 +56,8 @@ table {
 }
 
 a {
-    color: #4a4a4a
+    color: #E10B0B;
+    text-decoration: underline;
 }
 
 img {
@@ -83,25 +84,11 @@ h1,h2,h3,h4 {
     height: 0
 }
 
-.fl {
-    float: left
-}
-
-.fr {
-    float: right
-}
-
-.hide {
-    display: none
-}
-
-.show {
-    display: block
-}
-::-ms-reveal,input[type=text]::-ms-clear {
-    display: none
-}
-
+.fl { float: left}
+.fr {float: right}
+.hide {display: none}
+.show {display: block}
+::-ms-reveal,input[type=text]::-ms-clear {display: none}
 .section {
     overflow: hidden;
     z-index: 999
@@ -114,14 +101,8 @@ h1,h2,h3,h4 {
     top: 0;
     width: 100%
 }
-/*.section.s1{
-    border-style: double;
-    border-width: 0 0 4px 0;
-    padding-bottom:20px;
-    border-color: #7f9397;
-}*/
 .section.s1 .bg{
-    background: url("../images/bg1.jpg") no-repeat scroll center center / cover;
+    background: url("../images/sky.jpg") no-repeat scroll center center / cover;
 }
 .section.s1 .bd{
     color: #fff;
@@ -152,7 +133,6 @@ h1,h2,h3,h4 {
 }
 .section.s1 .bd h4{
     font-size: 14px;
-    color: #a7aeaf;
     padding-top: 25px;
 }
 .section.s1 .bd p{
@@ -162,7 +142,7 @@ h1,h2,h3,h4 {
 }
 
 
-/*复制*/
+/*样式*/
 #superContainer,.fp-section,.fp-slides,.fp-tableCell {
     position: relative
 }
@@ -455,4 +435,45 @@ h1,h2,h3,h4 {
 
 .section.s3 .bd{
     text-align: center;
+    font-size: 1.2rem;
+    color: #fff;
 }
+.section.s3 .bd p{
+    margin-top:20px;
+}
+.section.s3 .bd span{
+    margin-right: 20px;
+}
+
+.section.s5 .bg{
+    background: url("../images/snow.jpg") no-repeat scroll center center / cover;
+}
+.section.s5 .hd h4{
+    font-size: 1.8rem;
+    text-align: center;
+    color: #000;
+    margin: 40px 0;    
+}
+.section.s5 .bd{
+    font-size: 1.0rem;
+    line-height: 1.7rem;
+    font-family: "微软雅黑", Arial, Helvetica, s0s-serif;
+}
+.section.s5 .bd ul li{
+    margin-top: 15px;
+}
+.section.s5 .bd ul li h5{
+    color: #7BA7E1;
+    font-size: 1.2rem;
+}
+.section.s2 .bg{
+    background: url("../images/maitian.jpg") no-repeat scroll center center / cover;
+}
+.section.s6 .bg{
+    background: url("../images/pink_bg.jpg") no-repeat scroll center center / cover;
+}
+
+.section.s7 .bg{
+    background: url("../images/blue.jpg") no-repeat scroll center center / cover;
+}
+
