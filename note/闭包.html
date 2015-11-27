@@ -177,5 +177,90 @@ cal(1,2,3);
 	1.如果是call 或者是cpply ,with 指定的this是谁，它指向谁
 	2，普通的函数调用，函数被谁调用，它就指向谁
 	*/ 
-</script>
+
+	fucntion fun(){
+		name = "feeling";
+		alert(name);
+	}
+	console.log(name);//feeling
+
+	var name = "global";
+	fucntion fun() {
+		var name = "feeling";
+		return name;
+	}
+	console.log(fun()); //feeling
+	console.log(name);  //global
+
+	var name = "global";
+	fucntion fun(){
+		var name = "feeling";
+		console.log(name); //feeling
+
+		with({name : "with"}){
+			console.log(name); //with
+		}
+
+		console.log(name);  //feeling
+	}
+	console.log(name);   //global 不能够访问函数内部变量
+
+	function fun(){
+		if(0<2){
+			var name = "feeling";
+		}
+		console.log(name); //feeling
+		name = "change";
+		console.log(name);  //change
+	}
+
+	var name = "global";
+	fucntion fun() {
+		// 活动对象中没有查询到这个变量，就沿着作用域链往上找
+		console.log(name);
+		// 函数内部可以修改全局变量
+		name = "change" ; 
+		console.log(name);  //change  先查询活动对像，如果有就停止查询
+
+		var age = "18" ; 
+		console.log(age)  //18
+	}
+	fun();
+	console.log(age); //输入  age is  not undefined
+
+	function addMaker(capture) {
+		return function(free) {
+			var result = free +　capture;
+			console.log(result);
+		}
+	}
+
+	var add10 = addMaker(10);
+	add10(2);  //12
+
+	var add16 = addMaker(16);
+	add16(18);  //34
+	add10(30);   //40
+
+	for(var i=0;i<5;i++){
+		setTimeout(function(){
+			console.log(i);
+		},1000);
+	}
+	// 每秒钟打印一个五,一共五个5
+
+	/*for(var i=0;i<5;i++){
+		setTimeout(function(j){
+			console.log(j);
+		}(i),1000);
+	}*/
+
+	for(var i=0;i<5;i++){
+		(function(j){
+			setTimeout(function(){
+				console.log(j);
+			},1000);
+		})(i);
+	}
+</script> 
 </html>

@@ -63,3 +63,120 @@ function reSize(ele) {
 	})
 }
 
+
+// 面向对象组件库
+/**
+* 下拉列表
+* param {Object} selector 选择器或者是JQuery对象
+* param {Object} args 配置参数
+*/ 
+function DropDownRender(selector,arags) {
+	var _args = $.extend({
+		eMsg : '亲，后台报错了~',  //后台报错，返回错误信息
+		status : 0,  //操作成功后台，返回status
+		type : "post", // ajax请求类型
+		url : "" , //ajax 请求的URL
+		source : 'list', //ajax 返回json对象名称
+		key : 'name' ,   //ajax 返回json对象 对应的key的值
+		value : 'id' ,  //ajax  返回json 对象 对应的value的值
+		extra : '' ,	//ajax 返回json 对象 额外字段名
+		height : '300',	//列表高度
+		zIndex : 100 ,	
+		data : null ,
+		clickEvent : null ,	//列表元素点击事件
+		callback : null ,  //数据加载成功后回调方法
+	},(args,{})) ;
+
+	var _self = this;
+
+	//input text
+	this.dom = (selector instanceof $ ) ? selector : $(selector) ; 
+
+	// 下拉列表
+	this.listDom = $('<ul class="xhui_droplist"></ul>').appendTo($('body'));
+
+	// 数据源
+	this.source = [];
+
+	//选中的数据
+	this.selectedTarget = [];
+
+	//获取选中的数据
+	this.getSelected = function(){
+		return this.selectedTarget;
+	}
+
+	// 通过key,查找val
+	this.getVal = function(key){
+		var val = '';
+		$.each(_self.source,function(k,v){
+			if(key == v['key']){
+				val = v['val'];
+			}
+		});
+		return val;
+	}
+
+	// 通过value,查找key
+	this.getKey = function(val) {
+		var key = '';
+		$.each(_self.source,function(k,v){
+			if(val == v['val']) {
+				key = v['key'];
+			}
+		});
+		return key;
+	}
+
+	//设置位置
+	this.reSize = function(arg){
+		var arg = arg || {};
+		_self.listDom.css({
+			left : _self.dom.offset().left,
+			top : _self.dom.offset().top +　_self.dom.outerHeight(),
+			zIndex
+		})
+	}
+
+	// 
+	this.getSource = function(){
+		// 静态数据
+		if(_args.data){
+			_self.source = _args.datas;
+			return false;
+		}
+
+		$.ajax({
+			url : _args.url,
+			type : _args.type,
+			async : true,
+			dataType : "json",
+			success : function(){
+				if(data.status == _args.status){
+					$.each(data[_args.source],function(k,v){
+						_self.source.push({
+							key : v[_args.key],
+							val : v[_args.val],
+							extra : v[_args.extra]
+						});
+					});
+					_args.callback && _args.callback();
+				}else{
+					showMsg(data.msg || _args.eMsg,3);
+				}
+			}
+		});
+	}
+
+	var search = function(){
+		var val = _self.dom.val();
+		_self.listDom.html('');
+		_self.resize();
+		$.each({
+			_self.source,function(k,v){
+				if(v['val'])
+			}
+		})
+	}
+}
+
