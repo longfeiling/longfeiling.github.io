@@ -73,7 +73,7 @@ function fn() {
 	var max = 10;
 	return  function bar(x) {
 		if(x>max) {
-			console.log(x);   
+			console.log(x);
 		}
 	}
 }
@@ -81,3 +81,57 @@ var f1 = fn();
 f1(15);   //输出15
 
 // 2.函数作为参数传递
+
+
+
+
+function checkoutPalindrom(str) {
+	return str = str.split('').reverse().join('');
+}
+checkoutPalindrom("hello you hello");
+
+function uniqueFn(arr) {
+	var json = {}, newArr = [];
+	for(var i = 0; i < arr.length; i ++ ) {
+		if(!json[arr[i]]) {
+			newArr.push(arr[i]);
+			json[arr[i]] = true;
+		}
+	}
+	return newArr;
+}
+
+
+function findMaxDuplicateChar(str) {
+	if(str.length == 1) {
+		return str
+	}
+
+	let charObj = {};
+	for(let i = 0; i < str.length; i ++) {
+		if(!charObj[str.charAt(i)]) {
+			charObj[str.charAt(i)] = 1;
+		} else {
+			charObj[str.charAt(i)] += 1;
+		}
+	}
+	let maxChar = '',
+			maxValue = 1;
+	for(var k in charObj) {
+		if(charObj[k] > maxValue) {
+			maxChar = k;
+			maxValue = charObj[k];
+		}
+	}
+	return maxChar;
+}
+
+function swap(a, b) {
+	// 不借助临时变量 将两个整数交换、
+	// a = a + b
+	b = b - a;
+	a = a + b;
+	b = a - b;
+	return [a, b]
+
+}
