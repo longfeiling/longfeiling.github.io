@@ -1,11 +1,10 @@
-##nodejs 与 commonjs 规范
+## nodejs 与 commonjs 规范
 
 
-##模块的分类
-* 核心模块   http fs path 
+## 模块的分类
+* 核心模块   http fs path
 * 文件模块   var util = require('./util.js')
 *第三方模块   var promise = require("./promise")
-
 ##模块的流程
 1. 创建模块   teacher.js
 2. 导出模块   exports.add = function()｛｝
@@ -14,9 +13,9 @@
 
 
 ## node.js API
->url 
+>url
 url{
-	parse:Function('路径','query的返回的形式(true)',''),     //解析url的地址 
+	parse:Function('路径','query的返回的形式(true)',''),     //解析url的地址
 	resolve:Function,
 	resolveObject,
 	format,
@@ -33,7 +32,7 @@ url{
 
 ##http的知识
 
-###什么是http  
+###什么是http
 http客户端发起请求，创建端口，
 http服务器在端口监听客服端请求
 http服务器向客户点返回状态和内容
@@ -67,4 +66,4 @@ http头: 发送的是一些附加信息：内容类型，服务器发送响应�
 3. 什么是I/O
 4. 什么是单线程、多线程
 5. 什么是阻塞，非阻塞
-6. 
+6.

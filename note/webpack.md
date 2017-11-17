@@ -68,7 +68,7 @@ module: {
       }
     ]
   },
-```js
+```
 不同的loaders通过正则来对不同模块文件进行处理。比如我们的vue-loader来处理.vue格式的模块。url-loader，它会将小于8kb的图片，iconfont字体都转化为base64，超过8kb的才会生成具体文件(因为base64会比实际图片大小要大一些)。要特别说明的是，webpack编译完，最终我们需要的其实就是一个入口html和一个dist文件.
 ```
  resolve: {
@@ -78,7 +78,7 @@ module: {
       'vux-components': 'vux/src/components/'
     }
   },
-```js
+```
 
 resolve.extensions 是对模块后缀名的简写，配置后，原本是require('./components/app.vue') 可以简写为require('./components/app')
 resolve.alias 是别名，配置后，requrie('vux/src/components/')可以简写为require('vux-components')
@@ -91,7 +91,7 @@ vue: {
       sass: 'vue-style!css!sass'
     }
   }
-```js
+```
 
 
 
