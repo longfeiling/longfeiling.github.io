@@ -24,6 +24,23 @@ const start = async function() {
 start();
 ```
 
+```
+function requestP(url) {
+  return new Promise((resolve, reject) => {
+    ajax(url, (res) => {
+      resolve(JSON.parse(res))
+    })
+  })
+}
+(async () => {
+  let data = await requestP('product.json');
+
+  let users = await requestP('users.json');
+
+  let comments = await requestP('comments.json');
+})
+```
+
 ## 获得返回值
 await 等待的虽然是promise对象，但是不必写.then(..)，直接可以得到返回值
 

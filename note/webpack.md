@@ -70,7 +70,6 @@ module: {
     ]
   },
 ```
-
 不同的loaders通过正则来对不同模块文件进行处理。比如我们的vue-loader来处理.vue格式的模块。url-loader，它会将小于8kb的图片，iconfont字体都转化为base64，超过8kb的才会生成具体文件(因为base64会比实际图片大小要大一些)。要特别说明的是，webpack编译完，最终我们需要的其实就是一个入口html和一个dist文件.
 
 ```
@@ -95,9 +94,6 @@ vue: {
     }
   }
 ```
-
-
-
 ### loader 与 plugin 区别
 loader 用于加载某些资源文件，因为webpack本身只能打包CommonJs规范的文件，对于其他资源，例如css, 图片等是没有办法加载的，这就需要对应的loaders 将资源转化
 plugin
