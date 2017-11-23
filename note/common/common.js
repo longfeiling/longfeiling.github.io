@@ -69,7 +69,7 @@ function reSize(ele) {
 * 下拉列表
 * param {Object} selector 选择器或者是JQuery对象
 * param {Object} args 配置参数
-*/ 
+*/
 function DropDownRender(selector,arags) {
 	var _args = $.extend({
 		eMsg : '亲，后台报错了~',  //后台报错，返回错误信息
@@ -81,7 +81,7 @@ function DropDownRender(selector,arags) {
 		value : 'id' ,  //ajax  返回json 对象 对应的value的值
 		extra : '' ,	//ajax 返回json 对象 额外字段名
 		height : '300',	//列表高度
-		zIndex : 100 ,	
+		zIndex : 100 ,
 		data : null ,
 		clickEvent : null ,	//列表元素点击事件
 		callback : null ,  //数据加载成功后回调方法
@@ -90,7 +90,7 @@ function DropDownRender(selector,arags) {
 	var _self = this;
 
 	//input text
-	this.dom = (selector instanceof $ ) ? selector : $(selector) ; 
+	this.dom = (selector instanceof $ ) ? selector : $(selector) ;
 
 	// 下拉列表
 	this.listDom = $('<ul class="xhui_droplist"></ul>').appendTo($('body'));
@@ -138,7 +138,7 @@ function DropDownRender(selector,arags) {
 		})
 	}
 
-	// 
+	//
 	this.getSource = function(){
 		// 静态数据
 		if(_args.data){
