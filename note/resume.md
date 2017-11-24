@@ -6,23 +6,21 @@
 应聘岗位：web前端工程师
 
 ## 求职技能
-* 熟练掌握html(5)和css(3)，了解w3c规范，html语义化。具有*像素级*还原设计稿的能力。
-* 熟练掌握原生javascirpt，了解原型链，闭包，作用域，继承等概念，熟练使用es6部分新特性。
-* 了解nodejs，了解使用nodejs常用npm包管理工具和ExpressJs框架
-* 了解前端主流框架vuejs,reactjs，深入研究vuejs的实现机制及原理。
-* 了解gulp打包管理工具,熟练使用webpack模块管理工具来管理优化项目。
-* 能够独立搭建基于vuejs + vuex + router + axios + webpack框架开发项目
-* 了解AJAX,能够与后台成员配合完成动态页面开发。熟悉http协议及浏览器渲染原理，了解前端性能优化策略。
-* 使用sublime + eslint工具来编写开发，有一定的代码强迫症，追求风格优雅，整洁的代码。
-
-## 个人相关：
-github链接：https://github.com/longfeiling
-个人博客：http://www.cnblogs.com/Imflyer
+* 熟练掌握html(5)和css(3)，了解w3c规范，html语义化，具有像素级还原设计稿的能力；
+* 熟练掌握原生javascirpt，深入了解原型链，闭包，作用域，继承等概念，熟练使用es6部分新特性；
+* 了解nodejs，了解使用nodejs常用npm包管理工具和ExpressJs框架；
+* 熟练前端主流框架vuejs，深入研究vuejs的实现机制及原理；
+* 熟练使用webpack/gulp模块包管理工具来管理优化项目；
+* 熟练是掌握AJAX，熟悉http协议及浏览器渲染原理，了解前端性能优化策略；
+* 使用elint校验工具，有一定的代码强迫症，注重编码细节和代码性能；
+* github链接：https://github.com/longfeiling
+* 个人博客：http://www.cnblogs.com/Imflyer
 
 ## 教育背景：
 2011.09-2015.06  广东海洋大学-计算机科学与技术  本科（统招）
 
 ## 工作经验1
+2015.11-至今  深圳市对酒当歌科技有限公司
 ### 工作职责
 * 参加需求评审，讨论确认开发框架技术，输出开发方案
 * 根据项目需求和项目排期进行任务分配和时间安排
@@ -57,7 +55,7 @@ github链接：https://github.com/longfeiling
 
 
 ## 工作经验2
-2014.11 -- 2015.12  北京小荷网络技术有限公司
+2014.11 -- 2015.11  北京小荷网络技术有限公司
 ### 工作职责：
 * 参与需求评审，制定网站前端结构和开发方案
 * 负责用html和css将设计图进行页面重构
