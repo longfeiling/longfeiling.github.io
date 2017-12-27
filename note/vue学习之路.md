@@ -6,7 +6,11 @@
 * 组件化应用构建
 vue.js都是通过构建函数Vue创建一个实例来实现的，实例vue时，需要传入一个选项对象，包括数据、模板、挂载元素、方法、生命钩子等选项。
 每一个vue实例都会代理其data对象的所有属性，代理之后该属性才能够响应式更改。
-实例生命周期：实例被创建之前要经历一系列的初始化过程，例如，实例需要配置数据监测，编译模板，挂载实例到DOM，在数据更改的时候更新DOM过程中，调用一些生命钩子。
+实例生命周期：实例被创建之前要经历一系列的初始化过程，例如，实例需要配置数据监测，编译模板，挂载实例到DOM，在数据更改的时候更新DOM过程中，调用一些生命钩子。（beforeCreate、created、beforeMount、mounted、beforeUpdate、Updated、beforeDestory、Destoryed）
+* beforeCreate el和data都还没有初始化
+* created data已经被初始化,el undefined
+* beforeMount 模板挂载之前 完成了data和el的初始化
+* Mounted 模板挂载之后
 
 ## 计算属性 & methods
 对于某个数据复杂逻辑的实现，计算属性和methods都可以达到同样目的。
@@ -29,6 +33,16 @@ watcher:当执行异步操作或者开销较大的操作来响应数据变化的
 变化检测问题：vue不能检测对象属性的添加或者删除，所以都要预先定义好声明响应式属性。2. 不能检测数组length长度的变化，数组的arr[xx]=yy无法感知。
 异步更新队列：vue异步执行Dom更新。只要观察到数据变化，vue将开启一个队列，并缓冲在同一个事件循环中发生的所有数据变化。
 
+
+## vue的生命周期
+beforeCreate 组件实例刚刚被创建，组件属性计算之前
+Created 组件实例创建完成，属性已经绑定，但是DOM还没有生成，$el属性不存在
+beforeMount 模板编译、挂载之前
+mounted 模板/挂载 之后  (不保证子组件都在Document中)
+beforeUpdate 组件更新之前
+updated 组件更新之后
+beforeDestory 实例被销毁之前调用
+destoryed 实例被销毁之后调用
 
 
 

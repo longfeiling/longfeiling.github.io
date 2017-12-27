@@ -1,6 +1,10 @@
 ##前端安全问题主要是有两种
 1. xss （corss site scripting）跨域脚本攻击
 2. csrf (corss site request forgery) 跨站伪造请求
+
+CSRF的原理：
+攻击者向目标网站注入一个恶意的crsf的跨站url地址，当登录的用户访问某个特定的网页时，如果用户点击了该url,那么攻击就触发了。攻击者可以在该恶意的url的网页中，利用<img src="" />来向目标网站发生一个get请求，该请求会携带cookie或者session信息，那样就可以借助用户的信息来伪造一个请求，该请求是目标网站的用户有权访问的任意请求。也可以使用js来构建一个转账的post请求等。
+
 CSRF 的防御措施：
 1. 检测http referer是否同域名
 2. 避免登录的session长时间存储在客户端上
