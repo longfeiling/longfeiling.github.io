@@ -180,3 +180,21 @@ function DropDownRender(selector,arags) {
 	}
 }
 
+
+	var fn = new Promise((resolve) => {
+		console.log('a')
+		resolve();
+	})
+fn.then(() => {
+	console.log('b')
+})
+console.log('c')
+
+
+
+var http = require('http');
+http.createServer(function(require, response) {
+	response.wirteHeader(200, 'Content-type', 'text/plain');
+	respone.end('Hello word').listen('8080');
+})
+
