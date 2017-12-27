@@ -43,7 +43,7 @@ $('J_use_coin').on('click',function(){
 			_this.parents("item_content").hide(500,function(){
 				_this.parents(".fuli").removeClass("show");
 			})
-		},1000);	
+		},1000);
 	});
 })
 
@@ -146,4 +146,141 @@ function getPirceList(piadByWallet,piadByHercoin,paymentMethod,callback) {
 			},1000);
 		}
 	});
+}
+
+
+
+
+/**
+ * 观察者模式
+ *
+ */
+优点：
+1. 在时间上解耦
+2. 在模块对象之间解耦
+
+var salesOffice = {}; // 定义售楼处
+salesOffice.clientList = [];  // 定义缓存列表
+
+salesOffice.listen = function(fn) {
+	this.clientList.push(fn)
+};
+
+salesOffice.trigger = function() {  // 发布信息
+	for(var i = 0, fn; fn = this.clientList[i++];) {
+		fn.apply(this, arguments); // arguments 是发布消息的时候带上的参数
+	}
+}
+
+salesOffice.listen(function(price, squraseMeter) { // 小明的订阅信息
+	console.log("价格="+ price);
+	console.log("squraseMeter="+ squraseMeter);
+})
+
+salesOffice.listen(function(price, squraseMeter) { // 小红的订阅信息
+	console.log("价格="+ price);
+	console.log("squraseMeter="+ squraseMeter);
+})
+
+salesOffice.trigger(2000, 88);
+salesOffice.trigger(3000, 110);
+
+//至此，一个简单的发布-订阅者模式就实现了，但是，现在有一个问题，就是没有订阅到的消息也发出去了，这样我们就要加一个key标识，让订阅者只订阅自己感兴趣的信息
+
+var salesOffice = {}; // 定义售楼处
+salesOffice.clientList = [];  // 定义缓存列表
+
+salesOffice.listen = function(key, fn) {
+	if(!this.clientList[key]) {  // 如果还没有订阅过此类信息，给该类消息创建一个缓冲列表？
+		this.clientList[key] = [];
+	}
+	this.clientList[key].push(fn)  // 订阅的消息添加到消息缓存列表
+};
+
+salesOffice.trigger = function() {  // 发布信息
+	var key = Array.protoType.shift.call(arguments),  // 取出消息类型
+		fns = this.clientList[key]; // 取出对应的回调函数的集合
+	for(var i = 0, fn; fn = fns[i++];) {
+		fn.apply(this, arguments); // arguments 是发布消息的时候带上的参数
+	}
+}
+
+salesOffice.listen('squraseMeter88', function(price) { // 小明的订阅信息
+	console.log("价格="+ price);
+})
+
+salesOffice.listen('squraseMeter110', function(price) { // 小红的订阅信息
+	console.log("价格="+ price);
+})
+
+salesOffice.trigger('squraseMeter88', 2000);
+salesOffice.trigger('squraseMeter110', 3000);
+
+// 现在可以实现订阅自己感兴趣的事了
+
+
+// 发布订阅模式的通用实现
+var event = {
+	clientList: [],
+	listen: function(key, fn) {
+		if(!this.clientList[key]) {
+			this.clientList[key] = [];
+		}
+		this.clientList[key].push(fn);
+	},
+	trigger: function() {
+		var key = Array.protoType.shift.call(arguments),
+			fns = this.clientList[key];
+
+		if(!fns || fns.length === 0) {  // 如果没有绑定对应的信息，就直接return
+			return false;
+		}
+
+		for(var i = 0, fn; fn = fns[i++];) {
+			fn.apply(this, arguments);
+		}
+	}
+}
+// 在定义一个installEvent函数
+// 动态给所有对象实现发布-订阅功能
+var installEvent = function(obj) {
+	for(var i in event){
+		obj[i] = event[i];
+	}
+}
+
+// 测试
+var salesOffice = {};
+installEvent(salesOffice);
+
+salesOffice.listen('squraseMeter88', function(price){
+	console.log("price="+price)
+})
+
+salesOffice.listen('squraseMeter110', function(price){
+	console.log("price="+price)
+})
+
+salesOffice.trigger('squraseMeter88', 2000)
+salesOffice.trigger('squraseMeter110', 3000)
+
+
+
+# 取消订阅的事件
+event.remove = function(key, fn) {
+	var fns = this.clientList[key];
+
+	if(!fns) {  // 如果key对应的消息没有人订阅，直接返回
+		return false;
+	}
+	if(!fn) { // 如果没有传入具体的回调函数，表示需要取消key对应的所有订阅
+		fns && fns.length = 0;
+	}else {
+		for(var l = fns.length-1;l >= 0 ; l--) { // 反向遍历订阅的回回调函数列表
+			var _fn = fns[l];
+			if(_fn === fn) {
+				fns.splice(l, 1); // 删除订阅者的回调函数
+			}
+		}
+	}
 }

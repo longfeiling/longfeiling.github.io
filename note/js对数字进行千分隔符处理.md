@@ -10,7 +10,7 @@ function comdify(val) {
 
 // function delcomdify(num) {
   num = num.toString();
-  num = num.repalace(/,/gi, '');
+  num = num.replace(/,/gi, '');
   return num;
 }
 

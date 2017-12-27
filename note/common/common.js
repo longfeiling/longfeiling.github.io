@@ -180,3 +180,41 @@ function DropDownRender(selector,arags) {
 	}
 }
 
+/**
+ * 数字转换为中文字符串
+ */
+function numToString(num) {
+	var arr = num.toString().split('');
+	var len = arr.length;
+	var numArr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+	var strArr = ['十', '百', '千', '万'];
+}
+
+
+
+/*
+ * 数字转换为中文数字字符串
+ */
+function numberToChineseStr(number) {
+	var chineseNumbers = '零一二三四五六七八九';
+	var chineseUnits = '个十百千万';
+
+	var numberArr = number.toString().split('');
+	var lastIndex = numberArr.length - 1;
+
+	// 转换为中文数字字符串，未处理零
+	var ChineseStr = numberArr.reduceRight(function (result, num, idx) {
+		var number = chineseNumbers[num];
+		var unit = (idx != lastIndex && num != 0) ? chineseUnits[lastIndex - idx] : '';
+
+		return number + unit + result;
+	}, '');
+
+	return eliminateChineseZero(ChineseStr);
+}
+
+// 去除多余的零
+function eliminateChineseZero(str) {
+	return str.replace(/零(?=零)|(零+$)/g, '');
+}
+
