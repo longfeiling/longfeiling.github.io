@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>发布-订阅者模式</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+/**
+ * 实现一个发布-订阅者模式
+ * 1，首先确定好发布者
+ * 2. 然后给发布者添加一个缓存列表，存放订阅者的回调函数
+ * 3. 发布者发布信息的时候，遍历这个缓存列表，依次触发执行订阅者的回调函数
+ * 另外，我们也可以在这个回调函数里传入一些参数，订阅者接受这参数
+ *
+ * 以在一个网站中订阅文章为例
+ */
+
+var site = {};   // 定义一个github网站
+site.articleList = []; // 缓存列表，拿来存放订阅者的回调函数
+
+site.listen = function(fn) { // 添加订阅者
+	this.articleList.push(fn);  // 订阅的信息添加到缓存列表中
+};
+
+site.trriger = function() { // 发布信息
+	for(var i =0,fn; fn = this.articleList[i++];) {
+		fn.apply(this, arguments);  // 执行回调函数，arguments 是fn发布信息带上的参数
+	}
+};
+
+site.listen(function(name, date){  // 小明的订阅
+	console.log('文章的名称='+ name);
+	console.log('文章的日期='+ date);
+});
+
+site.listen(function(name, date) {  // 小红的订阅
+	console.log('文章的名称='+ name);
+	console.log('文章的日期='+ date);
+});
+
+site.trriger("js高级程序设计", "2018.1.9");
+site.trriger("vue框架学习", "2018.1.10");
+
+//至此，我们实现了简单的一个发布订阅者模式，但是这里存在问题，订阅者接收了发布者的每一个信息，小明想接收文章名称为js高级设计的这个文章，但是发布者将vue这个文章也推送了给小明，这就是不必要的困扰，所以，我们有必要添加一个标识key,让订阅者只订阅自己感兴趣的文章
+
+</script>
+</html>

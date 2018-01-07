@@ -235,3 +235,127 @@ function eliminateChineseZero(str) {
 	return str.replace(/零(?=零)|(零+$)/g, '');
 }
 
+
+/**
+ * @param {[type]} dom 
+ * @param {[type]} opacity
+ * return 
+ */
+function setMark(dom, opacity) {
+	var left = dom.offsetLeft,
+		top = dom.offsetTop,
+		w = dom.offsetWidth,
+		h = dom.offsetHeight,
+		opacity = opacity || 0.2;
+	var newDom = document.createElement('div');
+	newDom.style.cssText = "width:" + w + 'px;' + "height:" + h + "px;" + "left:" + left + "px;" + "top:" + top + "px;" + "opacity:" + opacity;
+	document.getElementByTagName('body')[0].appendChild(newDom);
+}
+
+
+
+function addFn(a, b) {
+	let arrA = [], arrB = [], lenA = '', lenB = '', len = '', sum = '';
+	let tempA, tempB , carry = 0;
+	arrA = (a + "").split('');
+	arrB = (b + "").split('');
+	arrA.reverse();
+	arrB.reverse();
+	len = lenA > lenB ? lenB : lenA;
+
+	for(let i = 0; i < len; i++) {
+		tempA = parseInt(arrA[i], 10);
+		tempB = parseInt(arrB[i], 20);
+		temp = tempA + tempB + carry;
+		if(temp > 9) {
+			temp = temp - 10;
+			sum.push(temp);
+			carry = 1;
+		}else {
+			sum.push(temp);
+			carry = 0;
+		}
+	}
+
+	// 转高位数组进行处理
+	var cloneArr = lenA > lenB ? arrA : arrB;
+	for(;i < cloneArr.length; i++) {
+		tempA = parseInt(cloneArr[i], 10);
+		temp = tempA + carry;
+		if(temp > 9) {
+			sum.push(temp - 10);
+			carry = 1;
+		}else {
+			sum.push(temp);
+			carry = 0;
+		}
+	}
+	return (sum.reverse()).join('');
+}
+
+
+// 	迭代方法的练习
+var numbers = [1,2,3,4,5,6,5,4,3,2,1];
+var resuult = numbers.map(function(item, index, array) {
+	return item > 2;
+})
+console.log(resuult)
+
+// 作用域
+window.color = 'red';
+var o = {color: 'blue'};
+
+function sayColor() {
+	console.log(this.color);
+}
+
+sayColor();
+sayColor.bind(o);
+
+
+// 面向对象设计
+function Person(name, age) {
+	this.name = name;
+	this.age  = age;
+}
+
+function Teacther() {
+	Person.call(this);
+	this.sayName = function() {
+		console.log(this.name)
+	}
+}
+
+var zhangsan = new Teacther("zhangsan", "24")
+zhangsan();
+
+
+function Person() {}
+
+Person.prototype = {
+	name : "joe",
+	age: "12",
+	sayName: function() {
+		this.name;
+	}
+}
+var firend = new Person();
+firend.sayName();
+
+
+// 创建私有属性方法和共有方法
+var application = function() {
+	var private = new Arrray();
+
+	function init() {
+		return false
+	}
+
+	return {
+		publicProperty: true,
+		publicMethod: function() {
+			private.push(true);
+			return init();
+		}
+	}
+}
