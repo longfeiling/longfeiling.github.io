@@ -188,17 +188,19 @@ salesOffice.trigger(3000, 110);
 //至此，一个简单的发布-订阅者模式就实现了，但是，现在有一个问题，就是没有订阅到的消息也发出去了，这样我们就要加一个key标识，让订阅者只订阅自己感兴趣的信息
 
 var salesOffice = {}; // 定义售楼处
-salesOffice.clientList = [];  // 定义缓存列表
+salesOffice.clientList = {};  // 定义缓存列表
 
 salesOffice.listen = function(key, fn) {
 	if(!this.clientList[key]) {  // 如果还没有订阅过此类信息，给该类消息创建一个缓冲列表？
 		this.clientList[key] = [];
 	}
 	this.clientList[key].push(fn)  // 订阅的消息添加到消息缓存列表
+	console.log("key=="+ key)
+	console.log(this.clientList[key])
 };
 
 salesOffice.trigger = function() {  // 发布信息
-	var key = Array.protoType.shift.call(arguments),  // 取出消息类型
+	var key = Array.prototype.shift.call(arguments),  // 取出消息类型
 		fns = this.clientList[key]; // 取出对应的回调函数的集合
 	for(var i = 0, fn; fn = fns[i++];) {
 		fn.apply(this, arguments); // arguments 是发布消息的时候带上的参数
@@ -220,6 +222,7 @@ salesOffice.trigger('squraseMeter110', 3000);
 
 
 // 发布订阅模式的通用实现
+// 在这里要注意，clientList是可以用字符串做下标的，之前给人质疑说我这里定义错了
 var event = {
 	clientList: [],
 	listen: function(key, fn) {
@@ -229,7 +232,7 @@ var event = {
 		this.clientList[key].push(fn);
 	},
 	trigger: function() {
-		var key = Array.protoType.shift.call(arguments),
+		var key = Array.prototype.shift.call(arguments),
 			fns = this.clientList[key];
 
 		if(!fns || fns.length === 0) {  // 如果没有绑定对应的信息，就直接return
@@ -266,7 +269,30 @@ salesOffice.trigger('squraseMeter110', 3000)
 
 
 
+
 # 取消订阅的事件
+var event = {
+	clientList: [],
+	listen: function(key, fn) {
+		if(!this.clientList[key]) {
+			this.clientList[key] = [];
+		}
+		this.clientList[key].push(fn);
+	},
+	trigger: function() {
+		var key = Array.prototype.shift.call(arguments),
+			fns = this.clientList[key];
+
+		if(!fns || fns.length === 0) {  // 如果没有绑定对应的信息，就直接return
+			return false;
+		}
+
+		for(var i = 0, fn; fn = fns[i++];) {
+			fn.apply(this, arguments);
+		}
+	}
+}
+
 event.remove = function(key, fn) {
 	var fns = this.clientList[key];
 
@@ -284,3 +310,53 @@ event.remove = function(key, fn) {
 		}
 	}
 }
+
+// 在定义一个installEvent函数
+// 动态给所有对象实现发布-订阅功能
+var installEvent = function(obj) {
+	for(var i in event){
+		obj[i] = event[i];
+	}
+}
+
+// 测试
+var salesOffice = {};
+installEvent(salesOffice);
+
+salesOffice.listen('squraseMeter88', fn1 = function(price){
+	console.log("price="+price)
+})
+
+salesOffice.listen('squraseMeter110', fn2 = function(price){
+	console.log("price="+price)
+})
+
+salesOffice.trigger('squraseMeter88', 2000)
+salesOffice.trigger('squraseMeter110', 3000)
+
+salesOffice.remove('squraseMeter88', fn1);
+
+
+
+// 网站实例
+login = {
+	list: [],
+	listen: function(key, fn) {
+		if(!list[key]) {
+			this.list[key] = [];
+		}
+		this.list[key].push(fn);
+	},
+	trigger: function() {
+		var key = Array.prototype.shift.call(this);
+		var fns = this.list[key];
+		if(!fns) {
+			return;
+		}
+
+		for(var i = 0, fn = fns[i++]) {
+			fn.apply(this, arguments);
+		}
+	}
+}
+
