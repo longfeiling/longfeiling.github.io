@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>发布-订阅者模式6-模块之间的通信</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <button  id="count">点我</button>
+  <div id="show"></div>
+</body>
+<script type="text/javascript">
+/*
+  实现一个全局对象就可以在两个封装良好的模块进行通信，不必理会知道对方是否存在
+ */
+var Event = (function() {
+  var articleList = {},
+    listen,
+    trriger,
+    remove;
+
+  listen = function(key, fn) {
+    if(!this.articleList[key]) {
+      this.articleList[key] = [];
+      this.articleList[key].push(fn)
+    }
+  }
+
+  trriger = function() {
+    var key = Array.prototype.shift.call(arguments);
+    var fns = this.articleList[key];
+
+    if(!fns || fns.length === 0) {
+      return false;
+    }
+
+    for(var i = 0, fn; fn = fns[i]; i++) {
+      fn.apply(this, arguments);
+    }
+  }
+
+  remove = function(key, fn) {
+    var fns = this.articleList[key];
+
+    if(!fns) {
+      return false;
+    }
+
+    if(!fn) {
+      fns && (fns.length = 0);
+    } else {
+      for(var i = 0, _fn; _fn = fns[i++];) {
+        if(_fn === fn) {
+          fns.splice(i,1);
+        }
+      }
+    }
+  };
+
+  return {
+    articleList,
+    listen,
+    trriger,
+    remove
+  }
+})();
+
+
+var a = (function(){
+  var count = 0;
+  var button = document.getElementById('count');
+  button.onclick = function(){
+      Event.trriger( 'add', count++ );
+  }
+})();
+var b = (function(){
+  var div = document.getElementById( 'show' );
+  Event.listen( 'add', function( count ){
+      div.innerHTML = count;
+  });
+})();
+
+//
+
+/*var a = (function(){
+  var count = 0;
+  var button = document.getElementById('count');
+  button.onclick = function(){
+      Event.trriger("js高级程序设计", "jscomment");
+  }
+})();
+var b = (function(){
+  var div = document.getElementById( 'show' );
+  Event.listen("js高级程序设计", function(comment) {   // 小明订阅的文章
+    console.log("jscomment=="+ comment);
+    div.innerHTML = comment;
+  });
+})();*/
+
+
+// 总结：优点：1. 时间上解耦，2. 对象之间解耦。应用广泛，即可以用在异步编程上，又可以松耦合完成代码的编写，平时常见的MVC和MVVM都是有用到这个发布-订阅者模式
+// 缺点：1. 创造订阅者本身就消耗时间和内存,
+//  2. 发布-订阅者模式虽然是弱化对象之间的联系，但是过度使用的话，就会将对象之间的关系深埋在背后，
+//  想要跟踪维护和理解就比较困难，所以合理的去使用这个模式。
+
+
+</script>
+</html>

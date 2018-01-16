@@ -237,9 +237,9 @@ function eliminateChineseZero(str) {
 
 
 /**
- * @param {[type]} dom 
+ * @param {[type]} dom
  * @param {[type]} opacity
- * return 
+ * return
  */
 function setMark(dom, opacity) {
 	var left = dom.offsetLeft,
@@ -359,3 +359,111 @@ var application = function() {
 		}
 	}
 }
+
+
+//
+function _debounce(fn, wait) {
+	var timer = null;
+	return function() {
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+			fn();
+		}, wait)
+	}
+}
+
+function _debounce(fn, wait, time) {
+	var pervious = null;
+	var timer = null;
+	return function() {
+		var now = new Date();
+		if(!pervious) {
+			pervious = now;
+		}
+
+		if(now - pervious > time) {
+			clearTimeout(timer);
+			fn();
+			pervious = now;
+		} else {
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				fn();
+			}, wait)
+		}
+	}
+}
+
+
+/**
+ * [_throttle 函数节流]
+ * @param  {Function} fn   [执行的时间]
+ * @param  {[type]}   time [设定的执行周期]
+ * @return {[type]}        [description]
+ */
+function _throttle(fn, time) {  // 函数节流
+	var timer = null;
+	var flag = true;  // 记录第一次执行的标志
+	return function() {
+		var args = arguments,  // 获取该函数的所有参数
+			_that = this;  // 将该函数的上下文保存起来
+		if(flag) {  // 如果是第一次执行，就立即执行该事件
+			fn.apply(_that, args);
+			return flag = false;   // 设置flag 为 false
+		}
+
+		if(timer) {   // 如果timer有值，证明有事件监听器在执行，直接返回
+			return false
+		}
+
+		timer = setTimeout(() => {
+			clearTimeout(timer)
+			timer = null;
+			fn.apply(_that, args);
+		}, time || 500)
+	}
+}
+
+
+// 数组去重
+Array.prototype.unique1 = function() {
+	var json = {},
+		result = [];
+
+	for(var i = 0, len = this.length; i < len; i++) {
+		if(!json[this[i]]) {
+			result.push(this[i]);
+			json[this[i]] = true;
+		}
+	}
+	return result;
+}
+
+Array.prototype.unique2 = function() {
+	var result = [this[0]];
+	this.sort();
+	for(var i = 0; i < this.length; i++) {
+		if(this[i] !== result[result.length -1]) {
+			result.push(this[i]);
+		}
+	}
+	return result;
+}
+
+
+// requestAnimationFrame的实例使用
+var start = null;
+var element = document.getElementById("some element you want to animate");
+element.style.position = 'absolute';
+
+function step(timestemp) {
+	if(!start) start = timestemp;
+
+	var progress = timestemp - start;
+	element.style.left = Math.min(progress / 10, 200) + 'px';
+	if(progress < 2000) {
+		window.requestAnimationFrame(step)
+	}
+}
+
+window.requestAnimationFrame(step);

@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>发布-订阅者模式5</title>
+	<title>发布-订阅者模式-取消订阅的事件</title>
 	<meta charset="utf-8">
 </head>
 <body>
 
 </body>
 <script type="text/javascript">
-// 上面实现的发布-订阅模式其实还存在两个小问题
-// 1. 我们给每一个发布者都添加了listen, trriger方法，造成资源浪费
-// 2. 小明和网站之间还存在耦合性，得要知道网站的名称才能够订阅
-// 实现一个全局的发布-订阅对象，我们所见的中介
+//有时候我们可能会需要取消订阅的功能
 var event = {
 	articleList: [],
 	listen: function(key, fn) {
@@ -51,7 +48,7 @@ event.remove = function(key, fn) {
 			}
 		}
 	}
-} 
+}
 
 // 定义一个动态实例化函数，动态安装发布-订阅功能
 var initEvent = function(obj) {
