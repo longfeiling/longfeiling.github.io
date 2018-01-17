@@ -360,3 +360,79 @@ login = {
 	}
 }
 
+
+// 闭包
+function addFn() {
+	var num = 0;
+	return function() {
+		num ++;
+		console.log("num=="+num)
+	}
+}
+var add = addFn();
+add();
+add();
+
+// 通用的事件绑定事件
+function addEvent(dom, type, handler) {
+	if()
+}
+
+// this 作用域
+var name = "hahah";
+var aPerson  = {
+	name : "lalal",
+	friend: {
+		name: "yayay",
+		showName: function() {
+			console.log(this.name);
+		}
+	}
+}
+aPerson.friend.showName.call(aPerson)
+aPerson.friend.showName();
+var show = aPerson.friend.showName;
+show();
+
+console.log(aPerson.friend)
+console.log(aPerson.friend.showName.call(aPerson))
+
+var name = "hahah";
+var aPerson = {
+	name: "lala",
+	friend: {
+		name: "yyaa",
+		showName: function() {
+			return function() {
+
+			}
+
+		}
+	}
+}
+
+
+var show = aFamousPerson.friend.showName();
+show();  // Bill Gates
+aFamousPerson.friend.showName.call(aFamousPerson) // "Steve Jobs"
+aFamousPerson.showName(); // Mark Zurkerberg
+
+
+
+var dom = document.getElementById("ulItem");
+
+dom.addEventListener('click', function(event) {
+	var event = event || window.event;
+	var target = event.target || event.srcElement;
+	if(target == "LI") {
+		alert(target.screenX);
+		alert(target.screenY);
+		alert(target.html);
+	}
+})
+
+
+
+
+
+

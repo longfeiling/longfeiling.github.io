@@ -1,0 +1,32 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>发布-订阅者模式6-模块之间的通信</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <ul id="myList">
+          <li id="list1">列表1</li>
+          <li id="list2">列表2</li>
+          <li id="list3">列表3</li>
+          <li id="list4">列表4</li>
+      </ul>
+</body>
+<script type="text/javascript">
+
+  var dom = document.getElementById("myList");
+
+  dom.addEventListener('click', function(event) {
+    var event = event || window.event;
+    console.log(event)
+    if(event.target.nodeName == "LI") {
+      alert("x坐标"+event.screenX);
+      alert("Y坐标"+event.screenY);
+      alert("内容"+event.target.innerHTML);
+    }
+  })
+
+</script>
+</html>
