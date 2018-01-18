@@ -375,7 +375,6 @@ add();
 
 // 通用的事件绑定事件
 function addEvent(dom, type, handler) {
-	if()
 }
 
 // this 作用域
@@ -430,6 +429,97 @@ dom.addEventListener('click', function(event) {
 		alert(target.html);
 	}
 })
+
+
+
+// 判断类型
+var type = function(o) {
+	var s = Object.prototype.toString.call(o);
+	return s.match(/\[object(.*?)\]/)[1].toLowerCase();
+}
+type({});
+
+
+// 在上面的基础上，加上专门判断某种类型数据的方法
+var type = function(o) {
+	var s = Object.prototype.toString.call(o);
+	return s.match(/\[object (.*?)\]/)[1].toLowerCase();
+};
+
+['Null',
+ 'Undefined',
+ 'Object',
+ 'Array',
+ 'String',
+ 'Number',
+ 'Boolean',
+ 'Function',
+ 'RegExp'
+].forEach(function (t) {
+  type['is' + t] = function (o) {
+    return type(o) === t.toLowerCase();
+  };
+});
+
+console.log(type.isObject({}))
+console.log(type.isNumber(NaN))
+
+
+// Array
+var a = [1,2,3];
+var b = [4,5,6];
+Array.prototype.push.apply(a,b)  // a.push.apply(a,b)
+console.log(a)
+
+// push 向对象添加元素
+var a = {a: 1};
+[].push.call(a,2);
+[].push.call(a, [3])
+a;
+
+
+// join
+var a = [1,2,3,4];
+a.join(' ');
+
+// concat 多个数组的合并，将新数组添加到原数组的后部，返回一个新数组，原数组不变
+['hello'].concat(['world','!']);
+
+// slice 取得数组中的部分数组，返回一个新数组，不会影响到原数组
+// slice 的一个重要的应用是将类似数组的对象转为真正的对象
+Array.prototype.slice.call({0:'1', 1: '2', length: 2});
+Array.prototype.slice.call(document.querySelectorAll("div"));
+Array.prototype.slice.call(arguments)
+
+// splice 用于删除原数组的一部分成员，并可以在删除的位置添加入新的数组成员，返回值是删除的数组，注意，原数组会改变
+arr.splice(index,count_to_remove,addElement1,addElement2,..)
+
+var a = [1,3,4,5,6,7];
+a.splice(4,2);
+console.log(a)
+
+
+// exec();  返回匹配结果，如果匹配，返回一个数组，成员是每一个匹配成功的子字符串，否则返回null
+var s = '_x_x';
+var r = /_(x)/;
+r.exec(s)
+
+var r = /a(b+)a/g;
+var a1 = r.exec('_abbba_aba_');
+a1
+
+
+// 利用g修饰符允许多次匹配的特点，可以用一个循环完成全部匹配
+var s = /a(b+)a/g;
+var r = '_abbba_aba_';
+
+while(true) {
+	var match = s.exec(r);
+	if(!match) break;
+	console.log(match[1])
+}
+
+
 
 
 
