@@ -209,6 +209,11 @@ templete.replace(
 ### 贪婪模式
 默认情况下是最大可能匹配，即匹配直到下一个字符不满足匹配规则为止。这种模式成为贪婪模式
 
+### 修饰符
+
+### 组匹配
+正则表达式的括号表示分组匹配，括号中的模式可以用来匹配分组的内容
+
 
 ## 参考文章
 * http://javascript.ruanyifeng.com/stdlib/regexp.html
