@@ -284,3 +284,41 @@ event.remove = function(key, fn) {
 		}
 	}
 }
+
+
+function fn() {
+	var result = new Array();
+
+	for(var i = 0; i<5; i++) {
+		result[i] = function() {
+			return i;
+		}
+	}
+	return result;
+}
+var arr = fn();
+var a1 = arr[0];
+console.log(a1())
+
+
+function fn() {
+	var result = new Array();
+	for(var i=0; i < 5; i++) {
+		result[i] = (function(num){
+			return function() {
+				return num;
+			}
+		})(i);
+	}
+}
+
+window.id ="window";
+document.getElementById("div1").onclick = function() {
+	alert(this.id)  // div1
+	var callback = function() {
+		alert(this.id) // 这里callback作为了普通函数调用，所以this指向window全局执行环境
+	};
+	callback();
+}
+
+
