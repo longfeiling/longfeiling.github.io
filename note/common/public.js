@@ -35,3 +35,27 @@ function addEvent(element,type,hander) {
 		ha
 	}
 }
+
+
+
+
+// jsonp 的使用
+// http:www.a.com/user?id=123   获取数据{id：123，name: "张三"}
+// 
+foo({
+	id: 123,
+	name: "张三"
+})；
+function createJsonp(url) {
+	var script = document.createElement('script');
+	script.type = "text/javascript";
+	script.src = url;
+	document.getElementByTagName("head")[0].appendChild(script);
+}
+
+createJsonp("http://www.a.com/user?id=123&callback=foo")
+
+2. cors （跨源资源共享）
+设置http请求头的Access-Control-allow-Origin: *;
+
+3. nginx 反代理

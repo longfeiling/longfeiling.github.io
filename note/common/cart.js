@@ -320,5 +320,14 @@ document.getElementById("div1").onclick = function() {
 	};
 	callback();
 }
+// 可以用一个变量保存对div节点的引用
+document.getElementById('div1').onclick = function() {
+	alert(this.id);
+	var that = this;
+	var callback = function() {
+		alert(that.id);
+	}
+	callback();
+}
 
 
