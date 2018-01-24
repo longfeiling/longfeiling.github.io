@@ -27,10 +27,11 @@ site.listen = function(fn) { // 添加订阅者
 
 site.trriger = function() { // 发布信息
 	for(var i =0,fn; fn = this.articleList[i++];) {
-		fn.apply(this, arguments);  // 执行回调函数，arguments 是fn发布信息带上的参数
+		fn.apply(this, arguments);  // 执行回调函数，arguments 是fn发布信息带上的参数，表现fn的参数列表
 	}
 };
 
+//简单的测试
 site.listen(function(name, date){  // 小明的订阅
 	console.log('文章的名称='+ name);
 	console.log('文章的日期='+ date);

@@ -188,17 +188,19 @@ salesOffice.trigger(3000, 110);
 //至此，一个简单的发布-订阅者模式就实现了，但是，现在有一个问题，就是没有订阅到的消息也发出去了，这样我们就要加一个key标识，让订阅者只订阅自己感兴趣的信息
 
 var salesOffice = {}; // 定义售楼处
-salesOffice.clientList = [];  // 定义缓存列表
+salesOffice.clientList = {};  // 定义缓存列表
 
 salesOffice.listen = function(key, fn) {
 	if(!this.clientList[key]) {  // 如果还没有订阅过此类信息，给该类消息创建一个缓冲列表？
 		this.clientList[key] = [];
 	}
 	this.clientList[key].push(fn)  // 订阅的消息添加到消息缓存列表
+	console.log("key=="+ key)
+	console.log(this.clientList[key])
 };
 
 salesOffice.trigger = function() {  // 发布信息
-	var key = Array.protoType.shift.call(arguments),  // 取出消息类型
+	var key = Array.prototype.shift.call(arguments),  // 取出消息类型
 		fns = this.clientList[key]; // 取出对应的回调函数的集合
 	for(var i = 0, fn; fn = fns[i++];) {
 		fn.apply(this, arguments); // arguments 是发布消息的时候带上的参数
@@ -220,6 +222,7 @@ salesOffice.trigger('squraseMeter110', 3000);
 
 
 // 发布订阅模式的通用实现
+// 在这里要注意，clientList是可以用字符串做下标的，之前给人质疑说我这里定义错了
 var event = {
 	clientList: [],
 	listen: function(key, fn) {
@@ -229,7 +232,7 @@ var event = {
 		this.clientList[key].push(fn);
 	},
 	trigger: function() {
-		var key = Array.protoType.shift.call(arguments),
+		var key = Array.prototype.shift.call(arguments),
 			fns = this.clientList[key];
 
 		if(!fns || fns.length === 0) {  // 如果没有绑定对应的信息，就直接return
@@ -266,7 +269,30 @@ salesOffice.trigger('squraseMeter110', 3000)
 
 
 
+
 # 取消订阅的事件
+var event = {
+	clientList: [],
+	listen: function(key, fn) {
+		if(!this.clientList[key]) {
+			this.clientList[key] = [];
+		}
+		this.clientList[key].push(fn);
+	},
+	trigger: function() {
+		var key = Array.prototype.shift.call(arguments),
+			fns = this.clientList[key];
+
+		if(!fns || fns.length === 0) {  // 如果没有绑定对应的信息，就直接return
+			return false;
+		}
+
+		for(var i = 0, fn; fn = fns[i++];) {
+			fn.apply(this, arguments);
+		}
+	}
+}
+
 event.remove = function(key, fn) {
 	var fns = this.clientList[key];
 
@@ -329,5 +355,211 @@ document.getElementById('div1').onclick = function() {
 	}
 	callback();
 }
+// 在定义一个installEvent函数
+// 动态给所有对象实现发布-订阅功能
+var installEvent = function(obj) {
+	for(var i in event){
+		obj[i] = event[i];
+	}
+}
 
+// 测试
+var salesOffice = {};
+installEvent(salesOffice);
+
+salesOffice.listen('squraseMeter88', fn1 = function(price){
+	console.log("price="+price)
+})
+
+salesOffice.listen('squraseMeter110', fn2 = function(price){
+	console.log("price="+price)
+})
+
+salesOffice.trigger('squraseMeter88', 2000)
+salesOffice.trigger('squraseMeter110', 3000)
+
+salesOffice.remove('squraseMeter88', fn1);
+
+
+
+// 网站实例
+login = {
+	list: [],
+	listen: function(key, fn) {
+		if(!list[key]) {
+			this.list[key] = [];
+		}
+		this.list[key].push(fn);
+	},
+	trigger: function() {
+		var key = Array.prototype.shift.call(this);
+		var fns = this.list[key];
+		if(!fns) {
+			return;
+		}
+
+		for(var i = 0, fn = fns[i++]) {
+			fn.apply(this, arguments);
+		}
+	}
+}
+
+
+// 闭包
+function addFn() {
+	var num = 0;
+	return function() {
+		num ++;
+		console.log("num=="+num)
+	}
+}
+var add = addFn();
+add();
+add();
+
+// 通用的事件绑定事件
+function addEvent(dom, type, handler) {
+}
+
+// this 作用域
+var name = "hahah";
+var aPerson  = {
+	name : "lalal",
+	friend: {
+		name: "yayay",
+		showName: function() {
+			console.log(this.name);
+		}
+	}
+}
+aPerson.friend.showName.call(aPerson)
+aPerson.friend.showName();
+var show = aPerson.friend.showName;
+show();
+
+console.log(aPerson.friend)
+console.log(aPerson.friend.showName.call(aPerson))
+
+var name = "hahah";
+var aPerson = {
+	name: "lala",
+	friend: {
+		name: "yyaa",
+		showName: function() {
+			return function() {
+
+			}
+
+		}
+	}
+}
+
+
+var show = aFamousPerson.friend.showName();
+show();  // Bill Gates
+aFamousPerson.friend.showName.call(aFamousPerson) // "Steve Jobs"
+aFamousPerson.showName(); // Mark Zurkerberg
+
+
+
+var dom = document.getElementById("ulItem");
+
+dom.addEventListener('click', function(event) {
+	var event = event || window.event;
+	var target = event.target || event.srcElement;
+	if(target == "LI") {
+		alert(target.screenX);
+		alert(target.screenY);
+		alert(target.html);
+	}
+})
+
+
+
+// 判断类型
+var type = function(o) {
+	var s = Object.prototype.toString.call(o);
+	return s.match(/\[object(.*?)\]/)[1].toLowerCase();
+}
+type({});
+
+
+// 在上面的基础上，加上专门判断某种类型数据的方法
+var type = function(o) {
+	var s = Object.prototype.toString.call(o);
+	return s.match(/\[object (.*?)\]/)[1].toLowerCase();
+};
+
+['Null',
+ 'Undefined',
+ 'Object',
+ 'Array',
+ 'String',
+ 'Number',
+ 'Boolean',
+ 'Function',
+ 'RegExp'
+].forEach(function (t) {
+  type['is' + t] = function (o) {
+    return type(o) === t.toLowerCase();
+  };
+});
+
+console.log(type.isObject({}))
+console.log(type.isNumber(NaN))
+
+
+// Array
+var a = [1,2,3];
+var b = [4,5,6];
+Array.prototype.push.apply(a,b)  // a.push.apply(a,b)
+console.log(a)
+
+// push 向对象添加元素
+var a = {a: 1};
+[].push.call(a,2);
+[].push.call(a, [3])
+a;
+
+
+// join
+var a = [1,2,3,4];
+a.join(' ');
+
+// concat 多个数组的合并，将新数组添加到原数组的后部，返回一个新数组，原数组不变
+['hello'].concat(['world','!']);
+
+// slice 取得数组中的部分数组，返回一个新数组，不会影响到原数组
+// slice 的一个重要的应用是将类似数组的对象转为真正的对象
+Array.prototype.slice.call({0:'1', 1: '2', length: 2});
+Array.prototype.slice.call(document.querySelectorAll("div"));
+Array.prototype.slice.call(arguments)
+
+// splice 用于删除原数组的一部分成员，并可以在删除的位置添加入新的数组成员，返回值是删除的数组，注意，原数组会改变
+arr.splice(index,count_to_remove,addElement1,addElement2,..)
+
+var a = [1,3,4,5,6,7];
+a.splice(4,2);
+console.log(a)
+
+
+// exec();  返回匹配结果，如果匹配，返回一个数组，成员是每一个匹配成功的子字符串，否则返回null
+var s = '_x_x';
+var r = /_(x)/;
+r.exec(s)
+
+var r = /a(b+)a/g;
+var a1 = r.exec('_abbba_aba_');
+a1
+
+
+// 利用g修饰符允许多次匹配的特点，可以用一个循环完成全部匹配
+var s = /a(b+)a/g;
+var r = '_abbba_aba_';
+
+while(true) {
+	var match = s.exec(r);
+	if(!match) break;
+	console.log(match[1])
+}
 

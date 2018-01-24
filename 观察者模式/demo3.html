@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>发布-订阅者模式3</title>
+	<title>发布-订阅者模式-通用实现</title>
 	<meta charset="utf-8">
 </head>
 <body>
@@ -40,6 +40,7 @@ var initEvent = function(obj) {
 
 var site = {};
 initEvent(site);
+
 
 site.listen("js高级设计模式", function(comment) {  // 小明订阅
 	console.log('内容=' + comment);
