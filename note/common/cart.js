@@ -563,3 +563,254 @@ while(true) {
 	console.log(match[1])
 }
 
+var myList = document.getElementByTagNames('ul')[0];
+var deepList = myList.cloneNode(true);
+alert(deepList.ch)
+
+
+var div = document.createElement('div');
+div.className = "message";
+
+var textNode = document.createTextNode('Hello world');
+div.appendChild(textNode);
+
+var anotherTextNode = document.createTextNode("another test!")
+div.appendChild(anotherTextNode);
+
+document.body.appendChild(div);
+
+var newNode = element.firstChild.splitText(5);
+alert(div.firstChild.nodeValue)
+alert(newNode.nodeValue);
+
+alert(div.childNodes.length);
+
+alert(div.childNodes.length);
+div.normalize();
+alert(div.childNodes.length);
+alert(div.firstChild.nodeValue);
+
+
+var fragment = document.createDocumentFragment();
+var ul = document.getElementById('myList');
+var li = null;
+
+for(var i = 0; i < 3; i++) {
+	li = document.createElement('li');
+	li.appendChild(document.createTextNode("item" + i));
+	fragment.appendChild(li);
+}
+ul.appendChild(fragment);
+
+
+function debounce(fn, time) {
+	var timer = null;
+	return function() {
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+			fn();
+		}, time)
+	}
+}
+
+function throttle(fn, time) {
+	var timer = null,
+		self = this,
+		firstTime = true;
+
+	return function() {
+		var args = arguments,
+			_this = this;
+		if(firstTime) {
+			self.apply(_this, args);	
+			return firstTime = false
+		}
+
+		if(timer) {
+			return false
+		}
+
+		timer = setTimeout(() => {
+			clearTimeout(timer);
+			timer = null;
+			self.apply(_this, args)
+		},time || 500)
+	}
+}
+
+
+function foo() {
+	setTimeout(() => {
+		console.log("id:",this.id)
+	},100)
+}
+
+var id = 12;
+foo.call({id: 24}); // 24
+
+
+
+function foo() {
+	setTimeout(function() {
+		console.log("id:",this.id)
+	},1000)
+}
+var id = 12;
+foo.call({id: 24})
+
+
+function Timer() {
+	this.s1 = 0;
+	this.s2 = 0;
+
+	setInterval(() => {
+		this.s1++;
+	},1000)
+
+	setInterval(function() {
+		this.s2++;
+	},1000)
+}
+
+var timer = new Timer();
+setTimeout(() => console.log("s1:",timer.s1), 3100)
+setTimeout(() => console.log("s2",timer.s2), 3100)
+
+foo::bar
+// 等同于
+bar.bind(foo)
+
+foo::bar(...arguments)
+bar.apply(foo,arguments);
+
+
+var args = {
+	"0": 'a',
+	"1": 'b',
+	"2": 'c',
+	"3": 'd',
+	length: 4
+}
+console.log(Array.prototype.slice.apply(args))
+
+
+function aAajx(url) {
+	var xhr = new XMLHttpRequest();
+	
+	xhr.onreadyStateChange = function() {
+		if(xhr.statusState === 4) {
+			if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+
+			}
+		}
+	}
+
+	xhr.open("get",url,true);
+	xhr.setRequestHeader("Accept", "json/application")
+	xhr.send(); 
+}
+
+
+// 下面是sea.js的实例， 依赖就近 延迟执行
+// A同事写的main.js  用sea.js 遵循CMD规范
+define(function(require, export, module) {
+	var oInput = document.getElementById("input1");
+	var oDiv1 = document.getElementById("div1");
+	var oDiv2 = document.getElementById("div2");
+	var oDiv3 = document.getElementById("div3");
+
+	require("./drag.js").drag(oDiv3);
+	oInput1.onclick = function() {
+		oDiv1.style.display = "block";
+		require('./scale.js').scale(oDiv1, oDiv2);
+
+		reuqire.asnyc('./scale.js', function(ex) {
+			ex.scale(oDiv1, oDiv2)
+		})
+	}
+} )
+
+// B 同事写的drag.js
+define(function(require, export, module) {
+	function drag(obj) {
+		var disX = 0;
+		var disY = 0;
+		obj.onmousedown = function(event) {
+			var event = event || window.event;
+			disX = event.clientX - obj.offsetLeft;
+			disY = event.clientY - obj.offsetTop;
+		}
+
+		obj.onmousemove = function(event) {
+			var event = event || window.event;
+
+			var L = require('./range.js').range(event.clientX - disX, document.documentElement.clientWidth - obj.offsetWidth, 0);
+			var T = require('./range.js').range(event.clientY - disY, document.documentElement.clientHeigth - obj.offsetHeight, 0)
+
+			obj.style.left = L + 'px';
+			obj.style.top = T + 'px';
+		};
+
+		obj.onmouseup = function() {
+			document.onmousedown = null;
+			document.onmousemove = null;
+		};
+
+		return false;
+	}
+
+	export.drag = drag;
+})
+
+// C同事写的scale.js
+define(function(require, export, moudlue) {
+	function scale(obj1, obj2) {
+		var disX = 0;
+		var disY = 0;
+		var disW = 0;
+		var disH = 0;
+	}
+})
+
+
+
+
+// requireJS的实例 AMD 依赖前置，提前执行
+// require.config 是用来定义别名的，在path属性下配置别名，然后通过requirejs(参数一)
+// 
+
+// main.js
+require.config({
+	paths：{
+		jquery: 'jquery.main' // 可以省略.js
+	}
+})
+// 引入模块，利用$表示jquery
+reuqire(['jquery'],function($) {
+	$('body').css('background-color', 'red');
+})
+// 引入的模块也可以直接只写require。requirejs是通过define定义模块的
+// define 模块
+define(['jquery'], function($) {
+	return {
+		add: function(x, y) {
+			return x + y;
+		}
+	}
+})
+
+//将模块命名为main.js
+define(['jquery', 'math'],function($,math) {
+	console.log(math.add(10, 200)) // 210;
+})
+
+// 如果一个模块没有依赖其他模块
+define(function() {
+	return {
+		name: 'haha',
+		age: 23
+	}
+})
+// AMD 规范推荐的风格是返回一个对象作为模块对象。
+// commonJS 的风格是通过对module.exports , exports 的属性赋值来达到暴露对象的目的
+// 

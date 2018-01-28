@@ -125,6 +125,18 @@ gulp: 是一个工具链，构建工具，配合各种插件做js压缩，css压
 gulp／grunt更多的是一个工作流，提供集成所有服务的一站式平台。可以用来优化前端开发流程。
 
 
+## webpack 打包性能优化
+* 减少打包的后文件的体积
+  * 可以用extrackTextPlugin插件将css文件剥离出来，这样样式就不会随着组件的加载而加载了
+  * 在开发环境下，把注释，警告去掉
+  * 提取公共代码块
+* 代码压缩 在开发环境下使用webpack-parallel-ugify-plugin插件并行运行ugifyJs插件，减少构建时间
+* 使用happy-webpack  原理就是让loader可以多线程去处理文件，还可以利用缓存使rebuild加快
+* 缓存和增量构建 
+  * 缓存 使用webpack-loader，该插件可以缓存处理过的模块，对没有修改过的文件就不回重新编译
+  * 增量 使用webpack-dev-middleware,
+* 减少构建搜索或编译路径 对于嵌套路径使用Resolve.moduledirectores，使用的是相对路径，
+
 
 
 
