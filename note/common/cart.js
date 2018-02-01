@@ -814,3 +814,28 @@ define(function() {
 // AMD 规范推荐的风格是返回一个对象作为模块对象。
 // commonJS 的风格是通过对module.exports , exports 的属性赋值来达到暴露对象的目的
 // 
+// 
+// 
+
+
+// 一个跨浏览器的事件处理对象
+var eventUtil = {
+	addHandler: function(element, type, handler) {
+		if(element.addEventListener) {
+			element.addEventListener(type, handler);
+		} else if (element.attachEvent) {
+			element.attachEvent("on"+type, handler);
+		} else {
+			element["on" + type] = handler;
+		}
+	},
+	removeHandler: function(element, type, handler) {
+		if(element.removeEventListener) {
+			element.removeEventListener(type, handler);
+		} else if(element.detachEvent) {
+			element.detachEvent("on"+type, handler);
+		} else {
+			element["on" + type] = null;
+		}
+	}
+}
